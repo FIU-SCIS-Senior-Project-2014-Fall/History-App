@@ -2259,7 +2259,7 @@
                     "class": "animate-flip-y"
                 }], $scope.admin = {
                     layout: "wide",
-                    menu: "vertical",
+                    menu: "horizontal",
                     fixedHeader: !0,
                     fixedSidebar: !1,
                     pageTransition: $scope.pageTransitionOpts[0]
