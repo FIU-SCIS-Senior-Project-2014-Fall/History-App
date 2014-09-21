@@ -5,11 +5,11 @@
         <div class="col-lg-3 col-xsm-6">
             <div class="panel mini-box">
                 <span class="btn-icon-lined btn-icon-round btn-icon-lg-alt btn-success">
-                    <i class="fa fa-rocket"></i>
+                    <i class="fa fa-eye"></i>
                 </span>
                 <div class="box-info">
-                    <p class="size-h2">36 <span class="size-h4">%</span></p>
-                    <p class="text-muted"><span data-i18n="Growth"></span></p>
+                    <p class="size-h2">3624</p>
+                    <p class="text-muted"><span data-i18n="Today's Views"></span></p>
                 </div>
             </div>
         </div>
@@ -19,19 +19,19 @@
                     <i class="fa fa-users"></i>
                 </span>
                 <div class="box-info">
-                    <p class="size-h2">12 <span class="size-h4">%</span></p>
-                    <p class="text-muted"><span data-i18n="New users"></span></p>
+                    <p class="size-h2">128</p>
+                    <p class="text-muted"><span data-i18n="New Users"></span></p>
                 </div>
             </div>
         </div>
         <div class="col-lg-3 col-xsm-6">
             <div class="panel mini-box">
                 <span class="btn-icon-lined btn-icon-round btn-icon-lg-alt btn-warning">
-                    <i class="fa fa-dollar"></i>
+                    <i class="fa fa-university"></i>
                 </span>
                 <div class="box-info">
-                    <p class="size-h2">8,120</p>
-                    <p class="text-muted"><span data-i18n="Profit"></span></p>
+                    <p class="size-h2">89</p>
+                    <p class="text-muted"><span data-i18n="Places Created Today"></span></p>
                 </div>
             </div>
         </div>
@@ -61,56 +61,69 @@
                 </div>
             </div>              
         </div>
+
         <div class="col-lg-4">
+ 
+            <div class="panel panel-default">
+                <div class="panel-heading"><strong><span class="fa fa-university"></span>&nbsp;&nbsp; My Historical Sites</strong></div>
+                <div class="panel-body" style="width: 100%; height: 362px;">
 
-            <div class="row" data-ng-controller="chartCtrl">
-                
-                <div class="col-xsm-6">
-                    <div class="panel panel-default">
-                        <div class="panel-body text-center">
-                            <div easypiechart options="easypiechartsm1.options" percent="easypiechartsm1.percent" class="easypiechart easypiechart-sm">
-                                <span class="pie-percent" ng-bind="easypiechartsm1.percent"></span>
-                            </div>
-                            <p class="text-center text-muted">Bounce Rate</p>
-                        </div>
-                    </div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Site Name</th>
+                                <th>City</th>
+                                <th>Total Views</th>
+                                <th>Table heading</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Table cell</td>
+                                <td>Table cell</td>
+                                <td>Table cell</td>
+                                <td>Table cell</td>
+                            </tr>
+                            <tr>
+                                <td>Table cell</td>
+                                <td>Table cell</td>
+                                <td>Table cell</td>
+                                <td>Table cell</td>
+                            </tr>
+                            <tr>
+                                <td>Table cell</td>
+                                <td>Table cell</td>
+                                <td>Table cell</td>
+                                <td>Table cell</td>
+                            </tr>
+                            <tr>
+                                <td>Table cell</td>
+                                <td>Table cell</td>
+                                <td>Table cell</td>
+                                <td>Table cell</td>
+                            </tr>
+                            <tr>
+                                <td>Table cell</td>
+                                <td>Table cell</td>
+                                <td>Table cell</td>
+                                <td>Table cell</td>
+                            </tr>
+                            <tr>
+                                <td>Table cell</td>
+                                <td>Table cell</td>
+                                <td>Table cell</td>
+                                <td>Table cell</td>
+                            </tr>
+                            <tr>
+                                <td>Table cell</td>
+                                <td>Table cell</td>
+                                <td>Table cell</td>
+                                <td>Table cell</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-
-                <div class="col-xsm-6">
-                    <div class="panel panel-default">
-                        <div class="panel-body text-center">
-                            <div easypiechart options="easypiechartsm2.options" percent="easypiechartsm2.percent" class="easypiechart easypiechart-sm">
-                                <span class="pie-percent" ng-bind="easypiechartsm2.percent"></span>
-                            </div>
-                            <p class="text-center text-muted">New Visists</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-xsm-6">
-                    <div class="panel panel-default">
-                        <div class="panel-body text-center">
-                            <div easypiechart options="easypiechartsm3.options" percent="easypiechartsm3.percent" class="easypiechart easypiechart-sm">
-                                <span class="pie-percent" ng-bind="easypiechartsm3.percent"></span>
-                            </div>
-                            <p class="text-center text-muted">Search Traffic</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-xsm-6">
-                    <div class="panel panel-default">
-                        <div class="panel-body text-center">
-                            <div easypiechart options="easypiechartsm4.options" percent="easypiechartsm4.percent" class="easypiechart easypiechart-sm">
-                                <span class="pie-percent" ng-bind="easypiechartsm4.percent"></span>
-                            </div>
-                            <p class="text-center text-muted">Modern Browsers</p>
-                        </div>
-                    </div>
-                </div>
-
             </div>
-
             
         </div>
     </div>
