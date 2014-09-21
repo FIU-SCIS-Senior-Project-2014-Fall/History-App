@@ -55,9 +55,12 @@
         </div>
         <div class="col-sm-9">
             <section class="panel panel-default mail-container">
-                <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Inbox</strong></div>
+                <div class="panel-heading" style="height:50px">
+                    <strong><span class="glyphicon glyphicon-th"></span> Inbox</strong>
+                    <span><button type="button" id="createTasksFromEmailsButton" class="btn btn-info btn-w-lg pull-right hidden">Add To Tasks</button></span>
+                </div>
                 <div class="mail-options">
-                    <label class="ui-checkbox"><input name="checkbox1" type="checkbox" value="option1" ><span>Toggle All</span></label>
+                    <label class="ui-checkbox"><input name="checkbox1" id="ToggleAllMailCheckboxes" type="checkbox" value="option1" ><span>Toggle All</span></label>
                 </div>
                 <table class="table table-hover table-responsive">
                     <tr class="mail-unread">
@@ -219,3 +222,4 @@
         </div>
     </div>
 </div>
+
