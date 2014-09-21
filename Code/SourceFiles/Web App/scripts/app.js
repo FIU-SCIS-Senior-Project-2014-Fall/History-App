@@ -1965,7 +1965,7 @@
                     return url = "/" + route, config = {
                         templateUrl: "views/" + route + ".html"
                     }, $routeProvider.when(url, config), $routeProvider
-                }, routes.forEach(function(route) {
+                }, routes.forEach(function(route) {   
                     return setRoutes(route)
                 }), $routeProvider.when("/", {
                     redirectTo: "/pages/signin"
