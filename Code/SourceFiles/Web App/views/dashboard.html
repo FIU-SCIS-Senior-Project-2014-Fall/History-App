@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-lg-3 col-xsm-6">
             <div class="panel mini-box">
-                <span class="btn-icon-lined btn-icon-round btn-icon-lg-alt btn-success">
+                <span class="btn-icon-lined btn-icon-round btn-icon-lg-alt btn-warning">
                     <i class="fa fa-eye"></i>
                 </span>
                 <div class="box-info">
@@ -26,7 +26,7 @@
         </div>
         <div class="col-lg-3 col-xsm-6">
             <div class="panel mini-box">
-                <span class="btn-icon-lined btn-icon-round btn-icon-lg-alt btn-warning">
+                <span class="btn-icon-lined btn-icon-round btn-icon-lg-alt btn-info">
                     <i class="fa fa-university"></i>
                 </span>
                 <div class="box-info">
@@ -37,105 +37,208 @@
         </div>
         <div class="col-lg-3 col-xsm-6">
             <div class="panel mini-box">
-                <span class="btn-icon-lined btn-icon-round btn-icon-lg-alt btn-danger">
-                    <i class="fa fa-shopping-cart"></i>
+                <span class="btn-icon-lined btn-icon-round btn-icon-lg-alt btn-success">
+                    <i class="fa fa-dollar"></i>
                 </span>
                 <div class="box-info">
                     <p class="size-h2">1324</p>
-                    <p class="text-muted"><span data-i18n="Sales"></span></p>
+                    <p class="text-muted"><span data-i18n="Premium Users"></span></p>
                 </div>
             </div>
         </div>
     </div>
     <!-- end stats -->
 
+    <!-- Graphs -->
     <div class="row">
-        <div class="col-lg-8">
+        <div class="col-lg-6">
             <div class="panel panel-default">
                 <div class="panel-body" data-ng-controller="flotChartCtrl">
                     <div data-flot-chart
                          data-data="line1.data"
                          data-options="line1.options"
-                         style="width: 100%; height: 372px;"
-                         ></div>
+                         style="width: 100%; height: 350px;">
+                     </div>
                 </div>
-            </div>              
+            </div> 
         </div>
+        <div class="col-lg-6">
+            <div class="panel panel-default" data-ng-controller="flotChartCtrl">
+                <div class="panel-body">
+                    <div data-flot-chart-realtime
+                         data-type="realtime"
+                         style="width: 100%; height: 350px;">
+                    </div>
+                </div>
+            </div>             
+        </div>
+    </div>
+    <!-- end graphs -->
 
-        <div class="col-lg-4">
- 
+    <!-- Data Tables and Gaugues-->
+    <div class="row">
+
+        <div class="col-lg-4"> 
             <div class="panel panel-default">
                 <div class="panel-heading"><strong><span class="fa fa-university"></span>&nbsp;&nbsp; My Historical Sites</strong></div>
-                <div class="panel-body" style="width: 100%; height: 362px;">
-
-                    <table class="table">
+                <div class="panel-body" style="width: 100%; height: 362px;"> 
+                    <table class="table table-hover">
                         <thead>
                             <tr>
                                 <th>Site Name</th>
                                 <th>City</th>
-                                <th>Total Views</th>
-                                <th>Table heading</th>
+                                <th>Total Views</th> 
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
+                                <td>Historical Place Name</td>
+                                <td>Miami</td>
+                                <td>112</td> 
                             </tr>
                             <tr>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
+                                <td>Historical Place Name</td>
+                                <td>Miami</td>
+                                <td>112</td> 
                             </tr>
                             <tr>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
+                                <td>Historical Place Name</td>
+                                <td>Miami</td>
+                                <td>112</td> 
                             </tr>
                             <tr>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
+                                <td>Historical Place Name</td>
+                                <td>Miami</td>
+                                <td>112</td> 
                             </tr>
                             <tr>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
+                                <td>Historical Place Name</td>
+                                <td>Miami</td>
+                                <td>112</td> 
                             </tr>
                             <tr>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
+                                <td>Historical Place Name</td>
+                                <td>Miami</td>
+                                <td>112</td> 
                             </tr>
                             <tr>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
-                            </tr>
+                                <td>Historical Place Name</td>
+                                <td>Miami</td>
+                                <td>112</td> 
+                            </tr> 
                         </tbody>
                     </table>
                 </div>
-            </div>
-            
+            </div> 
         </div>
-    </div>
 
-    <div class="panel panel-default" data-ng-controller="flotChartCtrl">
-        <div class="panel-body">
-            <div data-flot-chart-realtime
-                 data-type="realtime"
-                 style="width: 100%; height: 350px;"
-                 ></div>
+        <div class="col-lg-4"> 
+            <div class="panel panel-default">
+                <div class="panel-heading"><strong><span class="fa fa-line-chart"></span>&nbsp;&nbsp; Trending Historical Sites - Last 24 hours</strong></div>
+                <div class="panel-body" style="width: 100%; height: 362px;"> 
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Site Name</th>
+                                <th>City</th>
+                                <th>Total Views</th> 
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Historical Place Name</td>
+                                <td>Miami</td>
+                                <td>112</td> 
+                            </tr>
+                            <tr>
+                                <td>Historical Place Name</td>
+                                <td>Miami</td>
+                                <td>112</td> 
+                            </tr>
+                            <tr>
+                                <td>Historical Place Name</td>
+                                <td>Miami</td>
+                                <td>112</td> 
+                            </tr>
+                            <tr>
+                                <td>Historical Place Name</td>
+                                <td>Miami</td>
+                                <td>112</td> 
+                            </tr>
+                            <tr>
+                                <td>Historical Place Name</td>
+                                <td>Miami</td>
+                                <td>112</td> 
+                            </tr>
+                            <tr>
+                                <td>Historical Place Name</td>
+                                <td>Miami</td>
+                                <td>112</td> 
+                            </tr>
+                            <tr>
+                                <td>Historical Place Name</td>
+                                <td>Miami</td>
+                                <td>112</td> 
+                            </tr> 
+                        </tbody>
+                    </table>
+                </div>
+            </div> 
+        </div> 
+
+        <div class="col-lg-4"> 
+            <div class="panel panel-default">
+                <div class="panel-heading"><strong><span class="fa fa-line-chart"></span>&nbsp;&nbsp; Relevant Tasks</strong></div>
+                <div class="panel-body" style="width: 100%; height: 362px;"> 
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Task</th>
+                                <th>Description</th>
+                                <th>Created by</th> 
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Do this task</td>
+                                <td>Informative Task description</td>
+                                <td>SYSTEM</td> 
+                            </tr> 
+                            <tr>
+                                <td>Do this task</td>
+                                <td>Informative Task description</td>
+                                <td>SYSTEM</td> 
+                            </tr> 
+                            <tr>
+                                <td>Do this task</td>
+                                <td>Informative Task description</td>
+                                <td>SYSTEM</td> 
+                            </tr> 
+                            <tr>
+                                <td>Do this task</td>
+                                <td>Informative Task description</td>
+                                <td>SYSTEM</td> 
+                            </tr> 
+                            <tr>
+                                <td>Do this task</td>
+                                <td>Informative Task description</td>
+                                <td>SYSTEM</td> 
+                            </tr> 
+                            <tr>
+                                <td>Do this task</td>
+                                <td>Informative Task description</td>
+                                <td>SYSTEM</td> 
+                            </tr> 
+                            <tr>
+                                <td>Do this task</td>
+                                <td>Informative Task description</td>
+                                <td>SYSTEM</td> 
+                            </tr> 
+                        </tbody>
+                    </table>
+                </div>
+            </div> 
         </div>
-    </div>
-
+    <!-- end data tables --> 
 </div>
   
