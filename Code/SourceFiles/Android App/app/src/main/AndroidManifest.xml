@@ -1,9 +1,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="edu.fiu.seniorproject.historyapp">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-sdk android:minSdkVersion="10" />
+
     <application android:allowBackup="true"
         android:label="@string/app_name"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/historyapp"
         android:theme="@style/AppTheme">
         <!-- Splash screen -->
         <activity
@@ -18,6 +22,12 @@
             </intent-filter>
         </activity>
 
+        <!-- Main Screen activity -->
+        <activity
+            android:name=".MainScreenClass"
+            android:label="@string/app_name" >
+        </activity>
+
     </application>
-    <uses-permission android:name="android.permission.INTERNET" />
+
 </manifest>
