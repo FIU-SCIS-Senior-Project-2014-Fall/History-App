@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">HistoryApp</string>
+    <string name="app_name">History Explorer</string>
+    <string name="map">Go To Map</string>
+    <string name="trending">Now Trending</string>
+    <string name="saveRoutes">My Saved Routes</string>
+    <string name="feedback">Feedback</string>
 </resources>
