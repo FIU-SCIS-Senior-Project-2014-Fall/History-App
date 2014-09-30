@@ -1,38 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/worldmap">
+
 
     <Button
         android:id="@+id/GoToMapButton"
         android:text="@string/map"
-        android:layout_width="wrap_content"
+        android:textColor="@color/titletextcolor"
+        android:layout_width="179dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dip"
-        android:layout_centerHorizontal="true"
-               android:background="@color/buttons"/>
-    <Button
-        android:id="@+id/NowTrendingButton"
-        android:text="@string/trending"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="250dip"
-        android:layout_centerHorizontal="true"
-        android:background="@color/buttons"/>
-    <Button
-        android:id="@+id/SavedRoutesButton"
-        android:text="@string/saveRoutes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:background="@color/buttons"/>
+        android:background="@color/buttons"
+        android:layout_marginBottom="50dp"
+        android:layout_above="@+id/SavedRoutesButton"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
+
     <Button
         android:id="@+id/FeedbackButton"
         android:text="@string/feedback"
+        android:textColor="@color/titletextcolor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:background="@color/buttons"/>
-</LinearLayout>
+        android:background="@color/buttons"
+        android:layout_gravity="bottom"
+        android:layout_below="@+id/NowTrendingButton"
+        android:layout_marginTop="39dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/NowTrendingButton"
+        android:text="@string/trending"
+        android:textColor="@color/titletextcolor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/buttons"
+        android:layout_gravity="bottom"
+        android:layout_marginTop="45dp"
+        android:layout_below="@+id/SavedRoutesButton"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:id="@+id/SavedRoutesButton"
+        android:text="@string/saveRoutes"
+        android:textColor="@color/titletextcolor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/buttons"
+        android:layout_gravity="bottom"
+        android:layout_centerVertical="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Home"
+        android:background="@color/buttons"
+        android:textColor="@color/titletextcolor"
+        android:id="@+id/textView"
+        android:gravity="center"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true" />
+</RelativeLayout>

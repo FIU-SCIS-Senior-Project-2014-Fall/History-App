@@ -18,4 +18,12 @@ public class MainScreenClass extends Activity {
     }
     //button code information
     //http://developer.android.com/guide/topics/ui/controls/button.html
+
+    //Go to Map
+
+    //Now Trending
+
+    //SavedRoutes
+
+    //Feedback
 }

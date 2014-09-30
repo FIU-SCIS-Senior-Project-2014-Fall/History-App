@@ -28,6 +28,13 @@
             >
         </activity>
 
+        <!-- Map Screen activity -->
+        <activity
+            android:name=".SearchMapClass"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Black.NoTitleBar"
+            >
+        </activity>
     </application>
 
 </manifest>
