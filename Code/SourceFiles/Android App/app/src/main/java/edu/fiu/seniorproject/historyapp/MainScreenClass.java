@@ -18,8 +18,8 @@ public class MainScreenClass extends Activity {
         super.onCreate(savedInstanceState);
 
         requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
-        //setContentView(R.layout.mainscreenlayout);
-        getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.mainscreenlayout);
+        setContentView(R.layout.mainscreenlayout);
+        //getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.mainscreenlayout);
         addListenerOnButton();
     }
 
