@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:background="@drawable/worldmap">
 
 
@@ -15,7 +15,8 @@
         android:layout_marginBottom="50dp"
         android:layout_above="@+id/SavedRoutesButton"
         android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:clickable="true" />
 
     <Button
         android:id="@+id/FeedbackButton"
@@ -28,7 +29,8 @@
         android:layout_below="@+id/NowTrendingButton"
         android:layout_marginTop="39dp"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:clickable="true" />
 
     <Button
         android:id="@+id/NowTrendingButton"
@@ -41,7 +43,8 @@
         android:layout_marginTop="45dp"
         android:layout_below="@+id/SavedRoutesButton"
         android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:clickable="true" />
 
     <Button
         android:id="@+id/SavedRoutesButton"
@@ -53,7 +56,8 @@
         android:layout_gravity="bottom"
         android:layout_centerVertical="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:clickable="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -67,4 +71,5 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true" />
+
 </RelativeLayout>

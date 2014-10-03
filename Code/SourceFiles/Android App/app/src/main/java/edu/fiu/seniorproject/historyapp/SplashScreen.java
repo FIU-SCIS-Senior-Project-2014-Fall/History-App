@@ -4,10 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import org.json.JSONException;
-import org.json.JSONObject;
-import android.os.AsyncTask;
-import android.util.Log;
 
 public class SplashScreen extends Activity {
 
