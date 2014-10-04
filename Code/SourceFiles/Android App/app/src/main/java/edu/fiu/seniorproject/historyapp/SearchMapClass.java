@@ -46,13 +46,14 @@ public class SearchMapClass extends Activity{
             }
         }
     }
-
+}
+/*
     @Override
     protected void onResume() {
         super.onResume();
         initilizeMap();
     }
-}
+}*/
 
 
 

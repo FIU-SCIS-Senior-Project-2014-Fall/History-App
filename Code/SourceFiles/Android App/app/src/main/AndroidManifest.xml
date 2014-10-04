@@ -49,10 +49,23 @@
             >
         </activity>
 
+
+        <!-- Now Trending activity -->
+        <activity
+            android:name=".NowTrendingClass"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Black.NoTitleBar"
+            >
+        </activity>
+
+
         <!--Google API-->
         <meta-data
             android:name="com.google.android.maps.v2.AIzaSyCvdU9Z-pvQN771tdadjmvvC_Yg16X4VdY"
             android:value="AIzaSyCvdU9Z-pvQN771tdadjmvvC_Yg16X4VdY"/>
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
     </application>
 
 </manifest>
