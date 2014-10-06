@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="debug">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/HistoryExplorer/app/build/intermediates/pre-dexed/debug/classes-f7ebfbf6ca9146056a696220b08b955424499a2d.jar!/" />
+      <root url="jar://$PROJECT_DIR$/HistoryExplorer/app/build/intermediates/pre-dexed/debug/internal_impl-20.0.0-157eb1beeaf3d2056b45f2d4d7a83776c2296cc2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/HistoryExplorer/app/build/intermediates/pre-dexed/debug/classes-e053e848c5d3fcc4bc76addaeb47cc68065a2ce5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/HistoryExplorer/app/build/intermediates/pre-dexed/debug/classes-1bc50c782d7a3da79e4a27a8d572953533c6f1ab.jar!/" />
+      <root url="jar://$PROJECT_DIR$/HistoryExplorer/app/build/intermediates/pre-dexed/debug/support-annotations-20.0.0-78f9f11b93701915808c273a603789f19bc9e4d3.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

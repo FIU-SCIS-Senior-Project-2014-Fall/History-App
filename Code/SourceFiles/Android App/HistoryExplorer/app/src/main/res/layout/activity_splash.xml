@@ -1,0 +1,22 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0099cc"
+    tools:context="com.project.senior.Splash">
+
+    <ImageView
+        android:layout_width="530dp"
+        android:layout_height="716dp"
+        android:id="@+id/imageView3"
+        android:layout_gravity="center"
+        android:src="@drawable/splash" />
+
+    <Button
+        android:layout_width="382dp"
+        android:layout_height="wrap_content"
+        android:text="Explore!"
+        android:id="@+id/explore_button"
+        android:layout_gravity="center_horizontal|bottom" />
+
+</FrameLayout>
