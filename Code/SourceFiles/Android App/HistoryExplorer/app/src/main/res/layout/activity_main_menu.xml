@@ -26,7 +26,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Go To Map"
+            android:text="Explore"
             android:id="@+id/go_to_map"
             android:layout_marginTop="100dip"
             android:layout_alignParentLeft="true"
