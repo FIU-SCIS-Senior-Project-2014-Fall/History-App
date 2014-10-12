@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pre-dex-items>
+
+    <item
+        dex="C:\Users\tassadar\Desktop\HistoryExplorer\app\build\intermediates\pre-dexed\debug\classes-f7ebfbf6ca9146056a696220b08b955424499a2d.jar"
+        jar="C:\Users\tassadar\Desktop\HistoryExplorer\app\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="8694693636ab36910c8100ce527c258ff3ebece0"/>
+    <item
+        dex="C:\Users\tassadar\Desktop\HistoryExplorer\app\build\intermediates\pre-dexed\debug\internal_impl-20.0.0-157eb1beeaf3d2056b45f2d4d7a83776c2296cc2.jar"
+        jar="C:\Users\tassadar\Desktop\HistoryExplorer\app\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\libs\internal_impl-20.0.0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="e40b3078e3fbd353c9f44da8df25a8fc0078209d"/>
+    <item
+        dex="C:\Users\tassadar\Desktop\HistoryExplorer\app\build\intermediates\pre-dexed\debug\classes-1bc50c782d7a3da79e4a27a8d572953533c6f1ab.jar"
+        jar="C:\Users\tassadar\Desktop\HistoryExplorer\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\20.0.0\classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="f21927d22fe31889ecce94dd697a2e75b137e0ef"/>
+    <item
+        dex="C:\Users\tassadar\Desktop\HistoryExplorer\app\build\intermediates\pre-dexed\debug\classes-e053e848c5d3fcc4bc76addaeb47cc68065a2ce5.jar"
+        jar="C:\Users\tassadar\Desktop\HistoryExplorer\app\build\intermediates\exploded-aar\com.google.android.gms\play-services\5.2.08\classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="1ed7a7a05185651f9af41ad93711cb96b66f331c"/>
+    <item
+        dex="C:\Users\tassadar\Desktop\HistoryExplorer\app\build\intermediates\pre-dexed\debug\support-annotations-20.0.0-78f9f11b93701915808c273a603789f19bc9e4d3.jar"
+        jar="D:\Users\tassadar\AppData\Local\Android\android-studio\sdk\extras\android\m2repository\com\android\support\support-annotations\20.0.0\support-annotations-20.0.0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="9d9013e9ff35fc3756411e62873c363c70c638fa"/>
+
+</pre-dex-items>
