@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- From: file:/C:/Users/LosDurans/Documents/History-App/Code/SourceFiles/Android%20App/app/src/main/res/values/strings.xml -->
+    <eat-comment />
+
+    <string name="app_name">HistoryApp</string>
+    <!-- From: file:/C:/Users/LosDurans/Documents/History-App/Code/SourceFiles/Android%20App/app/src/main/res/values/styles.xml -->
+    <eat-comment />
+
+    <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+    </style>
+
+</resources>

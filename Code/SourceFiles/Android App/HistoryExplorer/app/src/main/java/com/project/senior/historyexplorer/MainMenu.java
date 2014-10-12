@@ -13,7 +13,7 @@ import android.view.View;
 
 
 public class MainMenu extends FragmentActivity {
-
+    private Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,11 +22,19 @@ public class MainMenu extends FragmentActivity {
         findViewById(R.id.go_to_map).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myIntent = new Intent(MainMenu.this, MapsActivity.class);
-                MainMenu.this.startActivity(myIntent);
+                intent = new Intent(MainMenu.this, MapsActivity.class);
+                MainMenu.this.startActivity(intent);
             }
         });
-    }
+
+        findViewById(R.id.now_trending).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent(MainMenu.this, TrendingActivity.class);
+                MainMenu.this.startActivity(intent);
+            }
+        });
+ }
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {

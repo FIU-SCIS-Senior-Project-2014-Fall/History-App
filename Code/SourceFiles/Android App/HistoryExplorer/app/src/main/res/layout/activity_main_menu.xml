@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#0099cc"
-    tools:context="com.mycompany.myapp.MainMenu">
+    tools:context="edu.fiu.seniorproject.MainMenu">
 
     <!-- The primary full-screen view. This can be replaced with whatever view
          is needed to present your content, e.g. VideoView, SurfaceView,
@@ -26,24 +26,22 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Explore"
+            android:text="Explore!"
             android:id="@+id/go_to_map"
-            android:layout_marginTop="100dip"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
+            android:layout_alignBottom="@+id/saved_routes"
+            android:layout_marginBottom="93dp"
             android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_alignParentLeft="true" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="My Saved Routes"
             android:id="@+id/saved_routes"
-            android:layout_marginTop="200dip"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
+            android:layout_alignBottom="@+id/now_trending"
+            android:layout_marginBottom="99dp"
             android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_alignParentLeft="true" />
 
         <Button
             android:layout_width="wrap_content"
@@ -51,10 +49,8 @@
             android:text="Now Trending"
             android:id="@+id/now_trending"
             android:layout_marginTop="300dip"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_alignRight="@+id/saved_routes"
+            android:layout_alignLeft="@+id/saved_routes" />
 
         <Button
             android:layout_width="wrap_content"
@@ -67,10 +63,8 @@
             android:linksClickable="true"
             android:onClick="goToSite"
             android:layout_marginTop="400dip"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_alignRight="@+id/now_trending"
+            android:layout_alignLeft="@+id/now_trending" />
 
     </RelativeLayout>
 
