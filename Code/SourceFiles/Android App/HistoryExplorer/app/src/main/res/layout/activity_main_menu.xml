@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0099cc"
+    android:background="#000000"
     tools:context="edu.fiu.seniorproject.MainMenu">
 
     <!-- The primary full-screen view. This can be replaced with whatever view
@@ -28,6 +28,7 @@
             android:layout_height="wrap_content"
             android:text="Explore!"
             android:id="@+id/go_to_map"
+            android:background="@color/maroon"
             android:layout_alignBottom="@+id/saved_routes"
             android:layout_marginBottom="93dp"
             android:layout_alignParentRight="true"

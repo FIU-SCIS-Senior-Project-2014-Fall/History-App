@@ -3,6 +3,7 @@ package com.project.senior.historyexplorer;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -34,6 +35,8 @@ public class MainMenu extends FragmentActivity {
                 MainMenu.this.startActivity(intent);
             }
         });
+        //makes icon transparent
+        getActionBar().setIcon(new ColorDrawable(getResources().getColor(android.R.color.transparent)));
  }
 
     @Override

@@ -14,8 +14,19 @@
     <string name="newest_routes">Newest Routes</string>
     <string name="newest_sites">Newest Sites</string>
     <string name="now_trending">Now Trending</string>
+    <string name="drawer_open">Open Navigation Drawer</string>
+    <string name="drawer_close">Close Navigation Drawer</string>
+    <string name="app_not_available">Sorry, there\'s no web browser available</string>
 
 
+    <string-array name="navigation_bar">
+        <item>Top Sites</item>
+        <item>Top Routes</item>
+        <item>Popular Sites</item>
+        <item>Popular Routes</item>
+        <item>Newest Sites</item>
+        <item>Newest Routes</item>
+    </string-array>
 
     <string-array name="top_sites_list">
         <item>Afghanistan</item>
