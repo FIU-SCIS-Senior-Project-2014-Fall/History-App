@@ -1752,10 +1752,6 @@
                     newItemNo = $scope.items.length + 1, $scope.items.push("Item " + newItemNo)
                 }
             }
-        ]).controller("CollapseDemoCtrl", ["$scope",
-            function($scope) {
-                return $scope.isCollapsed = !1
-            }
         ]).controller("ModalDemoCtrl", ["$scope", "$modal", "$log",
             function($scope, $modal, $log) {
                 $scope.items = ["item1", "item2", "item3"], $scope.open = function() {
@@ -1957,25 +1953,65 @@
     }.call(this),
     function() {
         "use strict";
-        angular.module("app", ["ngRoute", "ngAnimate", "ui.bootstrap", "easypiechart", "textAngular", "ui.tree", "ngMap", "ngTagsInput", "app.controllers", "app.directives", "app.localization", "app.nav", "app.ui.ctrls", "app.ui.directives", "app.ui.services", "app.ui.map", "app.form.validation", "app.ui.form.ctrls", "app.ui.form.directives", "app.tables", "app.task", "app.chart.ctrls", "app.chart.directives", "app.page.ctrls"]).config(["$routeProvider",
-            function($routeProvider) {
-                var routes, setRoutes;
-                return routes = ["dashboard", "ui/typography", "ui/buttons", "ui/icons", "ui/grids", "ui/widgets", "ui/components", "ui/timeline", "ui/nested-lists", "ui/pricing-tables", "ui/maps", "tables/static", "tables/dynamic", "tables/responsive", "forms/elements", "forms/layouts", "forms/validation", "forms/wizard", "charts/charts", "charts/flot", "charts/morris", "pages/404", "pages/500", "pages/blank", "pages/forgot-password", "pages/invoice", "pages/lock-screen", "pages/profile", "pages/signin", "pages/signup", "mail/compose", "mail/inbox", "mail/single", "tasks/tasks"], setRoutes = function(route) {
-                    var config, url;
-                    return url = "/" + route, config = {
-                        templateUrl: "views/" + route + ".html"
-                    }, $routeProvider.when(url, config), $routeProvider
-                }, routes.forEach(function(route) {   
-                    return setRoutes(route)
-                }), $routeProvider.when("/", {
-                    redirectTo: "/pages/signin"
-                }).when("/404", {
-                    templateUrl: "views/pages/404.html"
-                }).otherwise({
-                    redirectTo: "/404"
-                })
-            }
-        ])
+        angular.module("app", 
+        [ "ngRoute"
+        , "ngAnimate"
+        , "ui.bootstrap"
+        , "easypiechart"
+        , "textAngular"
+        , "ui.tree"
+        , "ngMap"
+        , "ngTagsInput"
+        , "app.controllers"
+        , "app.directives"
+        , "app.localization"
+        , "app.nav"
+        , "app.ui.ctrls"
+        , "app.ui.directives"
+        , "app.ui.services"
+        , "app.ui.map"
+        , "app.form.validation"
+        , "app.ui.form.ctrls"
+        , "app.ui.form.directives"
+        , "app.tables"
+        , "app.task"
+        , "app.chart.ctrls"
+        , "app.chart.directives"
+        , "app.page.ctrls"]).config(["$routeProvider",
+        function($routeProvider) {
+            var routes, setRoutes;
+            return routes = ["dashboard"
+            , "signin"
+            , "signup"
+            , "timeline"
+            , "map"
+            , "users"
+            , "groups"
+            , "permissions"
+            , "404"
+            , "500"
+            , "feedback"
+            , "blank"
+            , "forgot-password"
+            , "compose"
+            , "inbox"
+            , "single"
+            , "tasks"], setRoutes = function(route) {
+                var config, url;
+                return url = "/" + route, config = {
+                    templateUrl: "views/" + route + ".html"
+                }, $routeProvider.when(url, config), $routeProvider
+            }, routes.forEach(function(route) {   
+                return setRoutes(route)
+            }), $routeProvider.when("/", {
+                redirectTo: "/signin" 
+            }).when("/404", {
+                templateUrl: "views/404.html"
+            }).otherwise({
+                redirectTo: "/404"
+            })
+        }
+      ])
     }.call(this),
     function() {
         "use strict";
@@ -2071,14 +2107,14 @@
                             return $location.path()
                         }, addBg = function(path) {
                             switch ($element.removeClass("body-wide body-lock"), path) {
-                                case "/404":
-                                case "/pages/404":
-                                case "/pages/500":
-                                case "/pages/signin":
-                                case "/pages/signup":
-                                case "/pages/forgot-password":
+                                case "/404": 
+                                case "/500":
+                                case "/signin":
+                                case "/signup":
+                                case "/feedback":
+                                case "/forgot-password":
                                     return $element.addClass("body-wide");
-                                case "/pages/lock-screen":
+                                case "/lock-screen":
                                     return $element.addClass("body-wide body-lock")
                             }
                         }, addBg($location.path()), $scope.$watch(path, function(newVal, oldVal) {
