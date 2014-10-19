@@ -1,0 +1,47 @@
+<div class="page" style="width: 50%; margin-left:25%; margin-top:5%; ">  
+  
+<h1 class="text-center">{{main.brand}}</h1>
+
+<div class="panel panel-default">
+    <div class="panel-heading"><strong><i class="fa fa-quote-left"></i> Feedback</strong></div>
+        <div class="panel-body">
+            <form name="form_constraints" class="form-validation" novalidate data-ng-submit="submitForm()">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input id="txtName" type="text" class="form-control feedbackValidation">
+                    <br>
+                    <label>Email</label>
+                    <input id="txtEmail" type="text" class="form-control feedbackValidation">
+                    <br>
+                    <label>Title</label>
+                    <input id="txtTitle" type="text" class="form-control feedbackValidation">
+                    <br>
+                    <textarea id="txtFeedback" class="form-control feedbackValidation" rows="15"></textarea>
+                </div> 
+            </form>
+        </div>
+    </div>  
+        <div class="row pull-right"> 
+            <button id="btnClear" class="btn btn-default btn-w-md " style="margin-right:10px;">Clear</button>
+            <button id="btnSubmitFeedback" type="submit" class="btn btn-success btn-w-md" style="margin-right:13px;" >Submit</button>
+        </div>
+</div>
+
+<script>
+
+function clearForm(){
+    $(".feedbackValidation").val(""); 
+}
+
+$("#btnClear").click(function(){ 
+    clearForm();
+});
+
+$("#btnSubmitFeedback").click(function(){ 
+     
+     
+
+    clearForm(); 
+});
+ 
+</script>

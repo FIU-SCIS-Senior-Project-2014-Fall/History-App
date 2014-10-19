@@ -1,7 +1,77 @@
-<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    tools:context="edu.fiu.seniorproject.MainMenu">
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    <!-- The primary full-screen view. This can be replaced with whatever view
+         is needed to present your content, e.g. VideoView, SurfaceView,
+         TextureView, etc. -->
 
-</LinearLayout>
+    <!-- This FrameLayout insets its children based on system windows using
+         android:fitsSystemWindows. -->
+
+    <ImageView
+        android:layout_width="424dp"
+        android:layout_height="705dp"
+        android:id="@+id/imageView"
+        android:layout_gravity="center"
+        android:src="@drawable/main_menu" />
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Explore!"
+            android:id="@+id/go_to_map"
+            android:background="@color/maroon"
+            android:layout_alignBottom="@+id/saved_routes"
+            android:layout_marginBottom="93dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentLeft="true" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="My Saved Routes"
+            android:id="@+id/saved_routes"
+            android:background="@color/maroon"
+            android:layout_alignBottom="@+id/now_trending"
+            android:layout_marginBottom="99dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentLeft="true" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Now Trending"
+            android:id="@+id/now_trending"
+            android:layout_marginTop="300dip"
+            android:background="@color/maroon"
+            android:layout_alignRight="@+id/saved_routes"
+            android:layout_alignLeft="@+id/saved_routes" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Feedback"
+            android:id="@+id/feedback"
+            android:clickable="true"
+            android:autoLink="web"
+            android:cursorVisible="true"
+            android:linksClickable="true"
+            android:onClick="goToSite"
+            android:layout_marginTop="400dip"
+            android:background="@color/maroon"
+            android:layout_alignRight="@+id/now_trending"
+            android:layout_alignLeft="@+id/now_trending" />
+
+    </RelativeLayout>
+
+
+
+</FrameLayout>

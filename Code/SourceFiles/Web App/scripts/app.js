@@ -1960,7 +1960,24 @@
         angular.module("app", ["ngRoute", "ngAnimate", "ui.bootstrap", "easypiechart", "textAngular", "ui.tree", "ngMap", "ngTagsInput", "app.controllers", "app.directives", "app.localization", "app.nav", "app.ui.ctrls", "app.ui.directives", "app.ui.services", "app.ui.map", "app.form.validation", "app.ui.form.ctrls", "app.ui.form.directives", "app.tables", "app.task", "app.chart.ctrls", "app.chart.directives", "app.page.ctrls"]).config(["$routeProvider",
             function($routeProvider) {
                 var routes, setRoutes;
-                return routes = ["dashboard", "ui/typography", "ui/buttons", "ui/icons", "ui/grids", "ui/widgets", "ui/components", "ui/timeline", "ui/nested-lists", "ui/pricing-tables", "ui/maps", "tables/static", "tables/dynamic", "tables/responsive", "forms/elements", "forms/layouts", "forms/validation", "forms/wizard", "charts/charts", "charts/flot", "charts/morris", "pages/404", "pages/500", "pages/blank", "pages/forgot-password", "pages/invoice", "pages/lock-screen", "pages/profile", "pages/signin", "pages/signup", "mail/compose", "mail/inbox", "mail/single", "tasks/tasks"], setRoutes = function(route) {
+                return routes = [   "dashboard/dashboard", 
+                                    "layout/404", 
+                                    "layout/500",
+                                    "layout/feedback",
+                                    "layout/blank",
+                                    "layout/forgot-password",  
+                                    "layout/signin",
+                                    "layout/signup",
+                                    "mail/compose",
+                                    "mail/inbox",
+                                    "mail/single",
+                                    "places/step1",
+                                    "places/step2",
+                                    "places/step3",
+                                    "system_access/users",
+                                    "system_access/groups",
+                                    "system_access/permissions",
+                                    "tasks/tasks"], setRoutes = function(route) {
                     var config, url;
                     return url = "/" + route, config = {
                         templateUrl: "views/" + route + ".html"
@@ -1968,9 +1985,9 @@
                 }, routes.forEach(function(route) {   
                     return setRoutes(route)
                 }), $routeProvider.when("/", {
-                    redirectTo: "/pages/signin"
+                    redirectTo: "/layout/signin"
                 }).when("/404", {
-                    templateUrl: "views/pages/404.html"
+                    templateUrl: "views/layout/404.html"
                 }).otherwise({
                     redirectTo: "/404"
                 })
@@ -2072,14 +2089,13 @@
                         }, addBg = function(path) {
                             switch ($element.removeClass("body-wide body-lock"), path) {
                                 case "/404":
-                                case "/pages/404":
-                                case "/pages/500":
-                                case "/pages/signin":
-                                case "/pages/signup":
-                                case "/pages/forgot-password":
-                                    return $element.addClass("body-wide");
-                                case "/pages/lock-screen":
-                                    return $element.addClass("body-wide body-lock")
+                                case "/layout/404":
+                                case "/layout/500":
+                                case "/layout/signin":
+                                case "/layout/signup":
+                                case "/layout/feedback":
+                                case "/layout/forgot-password":
+                                    return $element.addClass("body-wide"); 
                             }
                         }, addBg($location.path()), $scope.$watch(path, function(newVal, oldVal) {
                             return newVal !== oldVal ? addBg($location.path()) : void 0
@@ -2239,13 +2255,29 @@
     }.call(this),
     function() {
         "use strict";
-        angular.module("app.controllers", []).controller("AppCtrl", ["$scope", "$rootScope",
-            function($scope, $rootScope) {
-                var $window;
-                return $window = $(window), $scope.main = {
+        angular.module("app.controllers", [])
+        .controller("AppCtrl", ["$scope", "$rootScope", "$route",
+            function($scope, $rootScope) { 
+                $scope.main = {
                     brand: "History Explorer",
-                    name: "Tracy Beeson"
-                }, $scope.pageTransitionOpts = [{
+                },
+                $scope.user = {  
+                    username: "" ,
+                    password: "" 
+                },
+                $scope.places ={
+                	showWizardControls: ""
+                }
+                , $scope.signin = function(){ 
+
+                }
+                , $scope.isWizzard = function (path) {
+				    if ($route.current && $route.current.regexp) {
+				        return "";
+				    }
+				    return "hidden";
+				}
+                , $scope.pageTransitionOpts = [{
                     name: "Scale up",
                     "class": "ainmate-scale-up"
                 }, {
@@ -2274,6 +2306,14 @@
                     danger: "#E9422E"
                 }
             }
+        ]).controller("DashboardCtrl", ["$scope",
+            function($scope) {
+                 $scope.currentUser = { 
+                    name: "Tracy Beeson",
+                    username: "" ,
+                    password: "" 
+                }
+            }
         ]).controller("HeaderCtrl", ["$scope",
             function() {}
         ]).controller("NavContainerCtrl", ["$scope",
@@ -2287,8 +2327,6 @@
                     return $scope.taskRemainingCount = count
                 })
             }
-        ]).controller("DashboardCtrl", ["$scope",
-            function() {}
         ])
     }.call(this), eval(function(p, a, c, k) {
         for (; c--;) k[c] && (p = p.replace(new RegExp("\\b" + c.toString(a) + "\\b", "g"), k[c]));

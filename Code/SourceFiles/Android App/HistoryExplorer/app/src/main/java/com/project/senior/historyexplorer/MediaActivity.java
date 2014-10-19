@@ -1,7 +1,8 @@
 package com.project.senior.historyexplorer;
 
-/**
- * Created by LosDurans on 10/13/2014.
- */
-public class MediaActivity {
+
+import android.app.Activity;
+
+public class MediaActivity extends Activity{
+
 }

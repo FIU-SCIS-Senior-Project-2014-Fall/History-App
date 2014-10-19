@@ -48,7 +48,6 @@ public class TrendingActivity extends Activity{
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setHomeButtonEnabled(true);
 
-
         //makes icon transparent
         getActionBar().setIcon(new ColorDrawable(getResources().getColor(android.R.color.transparent)));
 

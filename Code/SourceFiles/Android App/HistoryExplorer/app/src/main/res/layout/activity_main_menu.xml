@@ -39,6 +39,7 @@
             android:layout_height="wrap_content"
             android:text="My Saved Routes"
             android:id="@+id/saved_routes"
+            android:background="@color/maroon"
             android:layout_alignBottom="@+id/now_trending"
             android:layout_marginBottom="99dp"
             android:layout_alignParentRight="true"
@@ -50,6 +51,7 @@
             android:text="Now Trending"
             android:id="@+id/now_trending"
             android:layout_marginTop="300dip"
+            android:background="@color/maroon"
             android:layout_alignRight="@+id/saved_routes"
             android:layout_alignLeft="@+id/saved_routes" />
 
@@ -64,6 +66,7 @@
             android:linksClickable="true"
             android:onClick="goToSite"
             android:layout_marginTop="400dip"
+            android:background="@color/maroon"
             android:layout_alignRight="@+id/now_trending"
             android:layout_alignLeft="@+id/now_trending" />
 

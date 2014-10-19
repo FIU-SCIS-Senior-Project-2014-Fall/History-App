@@ -1,7 +1,7 @@
-<header class="top-header clearfix">
+<header class="top-header clearfix" >
 
     <!-- Logo -->
-    <div class="logo">
+    <div class="logo" ng-controller="AppCtrl">
         <a href="#/">
             <!-- <span class="logo-icon glyphicon glyphicon-fire"></span> -->
             <span>{{main.brand}}</span>
@@ -13,28 +13,17 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-    </div> 
+    </div>
 
-    <div class="top-nav"> 
-
-        <ul class="nav-left list-unstyled">
-
-            <li>
-                <a href="#/" data-toggle-nav-collapsed-min class="toggle-min" id="step3">
-                    <i class="fa fa-bars"></i>
-                </a>
-            </li>
-
+    <div class="top-nav" ng-controller="DashboardCtrl"> 
+        <ul class="nav-right pull-right list-unstyled">
+            
             <li class="search-box visible-md visible-lg">
                 <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-search text-muted"></i></span>
                     <input type="text" class="form-control" placeholder="Search...">
                 </div>
             </li>
-
-        </ul>
- 
-        <ul class="nav-right pull-right list-unstyled">  
 
             <li class="dropdown">
                 <a href="#/mail/inbox">
@@ -47,25 +36,22 @@
                 <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
                     <img src="images/g1.jpg" alt="" class="img-circle img30_30">
                     <span class="hidden-xs">
-                        <span data-i18n={{main.name}}></span>
+                        <span data-i18n={{currentUser.name}}></span>
                     </span>
                 </a>
                 <ul class="dropdown-menu with-arrow pull-right">
-                     
                     <li>
                         <a href="#/tasks/tasks">
                             <i class="fa fa-check"></i>
                             <span data-i18n="My Tasks"></span>
                         </a>
                     </li> 
-
                     <li>
-                        <a href="#/pages/signin">
+                        <a href="#/layout/signin">
                             <i class="fa fa-sign-out"></i>
                             <span data-i18n="Log Out"></span>
                         </a>
                     </li>
-                    
                 </ul>
             </li> 
         </ul>

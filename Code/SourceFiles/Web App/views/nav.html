@@ -6,18 +6,18 @@
         data-slim-scroll
         data-collapse-nav
         data-highlight-active>
-        <li><a href="#/dashboard"> <i class="fa fa-dashboard"></i><span data-i18n="Dashboard"></span> </a></li>
+        <li><a href="#/dashboard/dashboard"> <i class="fa fa-dashboard"></i><span data-i18n="Dashboard"></span> </a></li>
         
         <li>
-            <a href="#/ui/maps"><i class="fa fa-university"></i><span data-i18n="Places"></span></a> 
+            <a href="#/places/step1"><i class="fa fa-university"></i><span data-i18n="Places"></span></a> 
         </li> 
         
         <li>
-            <a href="#/tables"><i class="fa fa-cog"></i><span data-i18n="System Access"></span></a>
+            <a href="#/system_access"><i class="fa fa-cog"></i><span data-i18n="System Access"></span></a>
             <ul>
-                <li><a href="#/tables/static"><i class="fa fa-user">&nbsp;&nbsp;&nbsp;</i><span data-i18n="Users"></span></a></li>
-                <li><a href="#/tables/responsive"><i class="fa fa-users">&nbsp;&nbsp;</i><span data-i18n="Groups"></span></a></li>
-                <li><a href="#/tables/dynamic"><i class="fa fa-key">&nbsp;&nbsp;</i><span data-i18n="Permissions"></span></a></li> 
+                <li><a href="#/system_access/users"><i class="fa fa-user">&nbsp;&nbsp;&nbsp;</i><span data-i18n="Users"></span></a></li>
+                <li><a href="#/system_access/groups"><i class="fa fa-users">&nbsp;&nbsp;</i><span data-i18n="Groups"></span></a></li>
+                <li><a href="#/system_access/permissions"><i class="fa fa-key">&nbsp;&nbsp;</i><span data-i18n="Permissions"></span></a></li> 
             </ul>
         </li> 
         
@@ -31,12 +31,15 @@
 
         <li class="pull-right">
             <a><i class="fa fa-question-circle"></i><span data-i18n="Help"></span></a> 
-        </li> 
+        </li>  
 
-        <li class="pull-right hidden" id="addPlaceButton">
-            <a><i class="fa fa-plus-circle"></i><span data-i18n="Add Place"></span></a> 
+        <li class="pull-right {{places.showWizardControls}}" id="addPlaceButton">
+            <a><i class="fa fa-caret-right"></i><span data-i18n="Next"></span></a> 
         </li> 
-
-         
+  
+        <li class="pull-right {{places.showWizardControls}}" id="addPlaceButton">
+            <a><i class="fa fa-caret-left"></i><span data-i18n="Back"></span></a> 
+        </li> 
+ 
     </ul>  
 </div>
