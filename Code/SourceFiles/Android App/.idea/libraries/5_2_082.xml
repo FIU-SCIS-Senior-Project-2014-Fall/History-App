@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="5.2.08">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/HistoryExplorer/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/5.2.08/templates.zip!/" />
+      <root url="jar://$PROJECT_DIR$/HistoryExplorer/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/5.2.08/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

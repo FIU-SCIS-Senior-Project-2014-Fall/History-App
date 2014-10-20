@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+
     <string name="app_name">History Explorer</string>
     <string name="title_activity_maps">Map</string>
     <string name="title_activity_splash">Splash</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="title_activity_main_menu">MainMenu</string>
+
+    <!--Trending String items-->
     <string name="top_sites">Top Sites</string>
     <string name="top_routes">Top Routes</string>
     <string name="popular_sites">Popular Sites</string>
@@ -16,8 +19,6 @@
     <string name="now_trending">Now Trending</string>
     <string name="drawer_open">Open Navigation Drawer</string>
     <string name="drawer_close">Close Navigation Drawer</string>
-    <string name="app_not_available">Sorry, there\'s no web browser available</string>
-
 
     <string-array name="navigation_bar">
         <item>Top Sites</item>
@@ -27,6 +28,27 @@
         <item>Newest Sites</item>
         <item>Newest Routes</item>
     </string-array>
+
+    <!--Media Page String items-->
+    <string name="media_menu">Media Menu</string>
+    <string name="action_back">Back</string>
+
+    <string-array name="media_split_action_bar">
+        <item>Audio</item>
+        <item>Photos</item>
+        <item>Documents</item>
+    </string-array>
+
+    <!--Saved Routes String Items-->
+    <string name="saved_routes">My Saved Routes</string>
+
+    <string-array name="saved_routes_nav_bar">
+        <item>Saved Sites</item>
+        <item>Saved Routes</item>
+    </string-array>
+
+    <string name="app_not_available">Sorry, there\'s no web browser available</string>
+
 
     <string-array name="top_sites_list">
         <item>Afghanistan</item>

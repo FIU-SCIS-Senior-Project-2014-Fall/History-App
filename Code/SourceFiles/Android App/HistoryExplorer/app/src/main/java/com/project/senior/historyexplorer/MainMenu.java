@@ -3,6 +3,7 @@ package com.project.senior.historyexplorer;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
@@ -20,6 +21,11 @@ public class MainMenu extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
 
+        //makes icon transparent
+        getActionBar().setIcon(new ColorDrawable(getResources().getColor(android.R.color.transparent)));
+        getActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#003300")));
+
+        /*Transition from Main Menu to Map Screen*/
         findViewById(R.id.go_to_map).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -35,9 +41,15 @@ public class MainMenu extends FragmentActivity {
                 MainMenu.this.startActivity(intent);
             }
         });
-        //makes icon transparent
-        getActionBar().setIcon(new ColorDrawable(getResources().getColor(android.R.color.transparent)));
- }
+
+        findViewById(R.id.saved_routes).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent(MainMenu.this, SavedRoutes.class);
+                MainMenu.this.startActivity(intent);
+            }
+        });
+    }
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
@@ -45,7 +57,7 @@ public class MainMenu extends FragmentActivity {
     }
 
     public void goToSite (View view) {
-        goToUrl ( "http://ha-dev.cis.fiu.edu/");
+        goToUrl ( "http://ha-dev.cis.fiu.edu/WebApp/#/layout/feedback");
     }
 
     private void goToUrl (String url) {

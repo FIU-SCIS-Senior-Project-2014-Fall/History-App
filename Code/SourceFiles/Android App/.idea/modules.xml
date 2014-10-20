@@ -4,13 +4,19 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/HistoryExplorer/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/20.0.0/20.0.0.iml" filepath="$PROJECT_DIR$/HistoryExplorer/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/20.0.0/20.0.0.iml" />
       <module fileurl="file://$PROJECT_DIR$/HistoryExplorer/app/build/intermediates/exploded-aar/com.android.support/support-v4/20.0.0/20.0.0.iml" filepath="$PROJECT_DIR$/HistoryExplorer/app/build/intermediates/exploded-aar/com.android.support/support-v4/20.0.0/20.0.0.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HistoryExplorer/build/intermediates/exploded-aar/com.google.android.gms/play-services/4.2.42/4.2.42.iml" filepath="$PROJECT_DIR$/HistoryExplorer/build/intermediates/exploded-aar/com.google.android.gms/play-services/4.2.42/4.2.42.iml" />
       <module fileurl="file://$PROJECT_DIR$/HistoryExplorer/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/5.2.08/5.2.08.iml" filepath="$PROJECT_DIR$/HistoryExplorer/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/5.2.08/5.2.08.iml" />
       <module fileurl="file://$PROJECT_DIR$/HistoryExplorer/app/src/androidTest/androidTest.iml" filepath="$PROJECT_DIR$/HistoryExplorer/app/src/androidTest/androidTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/HistoryExplorer/app/build/generated/source/buildConfig/buildConfig.iml" filepath="$PROJECT_DIR$/HistoryExplorer/app/build/generated/source/buildConfig/buildConfig.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/build/generated/source/buildConfig/buildConfig1.iml" filepath="$PROJECT_DIR$/app/build/generated/source/buildConfig/buildConfig1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/build/intermediates/manifests/debug/debug.iml" filepath="$PROJECT_DIR$/app/build/intermediates/manifests/debug/debug.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/build/intermediates/manifests/test/debug/debug.iml" filepath="$PROJECT_DIR$/app/build/intermediates/manifests/test/debug/debug.iml" />
       <module fileurl="file://$PROJECT_DIR$/HistoryExplorer/app/build/intermediates/manifests/debug/debug.iml" filepath="$PROJECT_DIR$/HistoryExplorer/app/build/intermediates/manifests/debug/debug.iml" />
       <module fileurl="file://$PROJECT_DIR$/HistoryExplorer/app/src/main/main.iml" filepath="$PROJECT_DIR$/HistoryExplorer/app/src/main/main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/HistoryExplorer/app/build/generated/source/r/r.iml" filepath="$PROJECT_DIR$/HistoryExplorer/app/build/generated/source/r/r.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/build/generated/source/r/r.iml" filepath="$PROJECT_DIR$/app/build/generated/source/r/r.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HistoryExplorer/app/build/generated/source/r/r1.iml" filepath="$PROJECT_DIR$/HistoryExplorer/app/build/generated/source/r/r1.iml" />
       <module fileurl="file://$PROJECT_DIR$/HistoryExplorer/app/build/intermediates/manifests/release/release.iml" filepath="$PROJECT_DIR$/HistoryExplorer/app/build/intermediates/manifests/release/release.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/build/generated/source/buildConfig/test/test.iml" filepath="$PROJECT_DIR$/app/build/generated/source/buildConfig/test/test.iml" />
     </modules>
   </component>
 </project>

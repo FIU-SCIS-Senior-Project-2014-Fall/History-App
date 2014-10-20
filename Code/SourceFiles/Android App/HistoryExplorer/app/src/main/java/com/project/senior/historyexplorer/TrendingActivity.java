@@ -5,9 +5,11 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.app.NavUtils;
 import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -45,11 +47,12 @@ public class TrendingActivity extends Activity{
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
 
         //Enables ActionBar app icon to behave as action to toggle nav drawer
-        getActionBar().setDisplayHomeAsUpEnabled(true);
-        getActionBar().setHomeButtonEnabled(true);
+        //getActionBar().setDisplayHomeAsUpEnabled(true);
+        //getActionBar().setHomeButtonEnabled(true);
 
-        //makes icon transparent
+        //handles Action Bar Design: icon transparent and green
         getActionBar().setIcon(new ColorDrawable(getResources().getColor(android.R.color.transparent)));
+        getActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#003300")));
 
         // ActionBarDrawerToggle ties together the the proper interactions
         // between the sliding drawer and the action bar app icon
@@ -76,22 +79,8 @@ public class TrendingActivity extends Activity{
             selectItem(0);
         }
     }
-   /* @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // The action bar home/up action should open or close the drawer.
-        // ActionBarDrawerToggle will take care of this.
-        if (mDrawerToggle.onOptionsItemSelected(item)) {
-            return true;
-        }
-        switch(item.getItemId())
-        {
-            case R.id.action_navigation:
-                mDrawerToggle.
-                        break;
-            case R.id.
-        }
-    }*/
 
+    //Creates Action Bar actions from the main menu layout
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -107,6 +96,7 @@ public class TrendingActivity extends Activity{
         }
     }
 
+    //handles the switching between navigation drawer items
     private void selectItem(int position) {
         // update the main content by replacing fragments
         Fragment fragment = new Fragment();
@@ -147,4 +137,25 @@ public class TrendingActivity extends Activity{
         // Pass any configuration change to the drawer toggls
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
+
+    //Action Bar Icons activity handler
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Pass the event to ActionBarDrawerToggle, if it returns
+        // true, then it has handled the app icon touch event
+        if (mDrawerToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+
+        // Handle presses on the action bar items
+        switch (item.getItemId()) {
+            case R.id.home_icon:
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+
 }
