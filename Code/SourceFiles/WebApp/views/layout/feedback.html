@@ -1,22 +1,22 @@
-<div class="page" style="width: 50%; margin-left:25%; margin-top:5%; ">  
+<div class="page" style="overflow: auto">  
   
 <h1 class="text-center">{{main.brand}}</h1>
 
 <div class="panel panel-default">
     <div class="panel-heading"><strong><i class="fa fa-quote-left"></i> Feedback</strong></div>
         <div class="panel-body">
-            <form name="form_constraints" class="form-validation" novalidate data-ng-submit="submitForm()">
+            <form name="form_constraints" class="form-validation" validate data-ng-submit="submitForm()">
                 <div class="form-group">
                     <label>Name</label>
-                    <input id="txtName" type="text" class="form-control feedbackValidation">
+                    <input required id="txtName" type="text" class="form-control feedbackValidation">
                     <br>
                     <label>Email</label>
-                    <input id="txtEmail" type="text" class="form-control feedbackValidation">
+                    <input required  id="txtEmail" type="text" class="form-control feedbackValidation">
                     <br>
                     <label>Title</label>
-                    <input id="txtTitle" type="text" class="form-control feedbackValidation">
+                    <input required  id="txtTitle" type="text" class="form-control feedbackValidation">
                     <br>
-                    <textarea id="txtFeedback" class="form-control feedbackValidation" rows="15"></textarea>
+                    <textarea required  id="txtFeedback" class="form-control feedbackValidation" rows="15"></textarea>
                 </div> 
             </form>
         </div>
@@ -38,10 +38,23 @@ $("#btnClear").click(function(){
 });
 
 $("#btnSubmitFeedback").click(function(){ 
-     
-     
+    
+   var author = $("#txtName").val();
+   var email = $("#txtEmail").val();
+   var title = $("#txtTitle").val();
+   var feedback = $("#txtFeedback").val();
 
-    clearForm(); 
+   if(author == ""  || email == "" || title == "" || feedback == "") 
+   	return; 
+
+   $.post("../WebApp/rest/insertfeedback.php", { 
+	author: author, 
+	email: email,
+	title: title,
+	feedback: feedback,
+	 });
+
+   clearForm(); 
 });
  
 </script>
