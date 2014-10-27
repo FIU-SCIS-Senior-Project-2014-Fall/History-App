@@ -3,7 +3,7 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme">
-        <item name="android:background">@color/green</item>
+        <item name="android:background">@drawable/main_menu</item>
     </style>
 
     <style name="FullscreenTheme" parent="android:Theme.NoTitleBar">

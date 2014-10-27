@@ -2,8 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000"
     tools:context="edu.fiu.seniorproject.MainMenu">
+
     <TextView
         style="@style/AppTheme"
         android:layout_width="match_parent"
@@ -14,14 +14,13 @@
          TextureView, etc. -->
 
     <!-- This FrameLayout insets its children based on system windows using
-         android:fitsSystemWindows. -->
-
+         android:fitsSystemWindows.
     <ImageView
         android:layout_width="424dp"
         android:layout_height="705dp"
         android:id="@+id/imageView"
         android:layout_gravity="center"
-        android:src="@drawable/main_menu" />
+        android:src="@drawable/main_menu" />-->
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"

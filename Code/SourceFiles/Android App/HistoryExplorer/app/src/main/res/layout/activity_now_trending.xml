@@ -17,13 +17,13 @@
         android:layout_height="match_parent"
         tools:context="edu.fiu.seniorproject.TrendingActivity">
 
-        <!--Background-->
+        <!--Background
         <ImageView
             android:layout_width="424dp"
             android:layout_height="705dp"
             android:id="@+id/imageView"
             android:layout_gravity="center"
-            android:src="@drawable/main_menu" />
+            android:src="@drawable/main_menu" />-->
 
         </FrameLayout>
 
