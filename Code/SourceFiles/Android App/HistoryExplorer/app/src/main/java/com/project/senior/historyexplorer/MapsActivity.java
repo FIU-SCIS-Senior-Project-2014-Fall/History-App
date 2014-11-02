@@ -24,6 +24,7 @@ import android.widget.Toast;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
+//import com.google.android.maps.GeoPoint;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
@@ -40,6 +41,7 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMyLoca
     private MarkerOptions markerOptions;
     private LatLng latLng;
     private EditText mapSearchBox;
+    //private static String url = "http://ha-dev.cis.fiu.edu/WebApp/Files/data.xml";
     //private MapView mapView;
 
     @Override
@@ -53,14 +55,14 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMyLoca
         historyMap.setOnMyLocationChangeListener(this);
         historyMap.animateCamera(CameraUpdateFactory.zoomTo(15));
 
-        /*For Media page while google maps is down
+        /*For Media page while google maps is down*/
         findViewById(R.id.mediaButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MapsActivity.this, MediaActivity.class);
                 MapsActivity.this.startActivity(intent);
             }
-        });*/
+        });
 
         /*
             Search function.
@@ -136,7 +138,7 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMyLoca
         double latitude = location.getLatitude();
         double longitude = location.getLongitude();
         LatLng latLng = new LatLng(latitude,longitude);
-        historyMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+        //historyMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
     }
 
     private class SearchClicked extends AsyncTask<Void, Void, Boolean> {
@@ -222,6 +224,15 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMyLoca
                 // Locate the first location
                 if(i==0)
                     historyMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
+
+                //Generate DropDown menu when marker is selected
+                /*findViewById(R.id.mediaButton).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(MapsActivity.this, MediaActivity.class);
+                        MapsActivity.this.startActivity(intent);
+                    }
+                });*/
             }
         }
     }
