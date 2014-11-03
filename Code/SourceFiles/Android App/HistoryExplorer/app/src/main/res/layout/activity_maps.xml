@@ -50,6 +50,25 @@
             android:layout_below="@id/et_location"
         />
 
+       <!-- <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Timeline"
+            android:id="@+id/timeline"
+            android:layout_below="@id/et_location"
+            android:layout_alignParentStart= "@id/mediaButton"
+            android:layout_alignParentLeft="@id/mediaButton"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Recommend"
+            android:id="@+id/recommend"
+            android:layout_below="@id/et_location"
+            android:layout_alignParentStart= "@id/timeline"
+            android:layout_alignParentLeft= "@id/timeline"
+            />-->
     </RelativeLayout>
 
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"

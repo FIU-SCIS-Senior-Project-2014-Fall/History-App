@@ -41,8 +41,7 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMyLoca
     private MarkerOptions markerOptions;
     private LatLng latLng;
     private EditText mapSearchBox;
-    //private static String url = "http://ha-dev.cis.fiu.edu/WebApp/Files/data.xml";
-    //private MapView mapView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -127,18 +126,13 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMyLoca
             }*/
         }
     }
-/*
-    private void setUpMap() {
-        //historyMap.addMarker(new MarkerOptions().position(new LatLng(0, 0)).title("Marker"));
-    }*/
-
 
     @Override
     public void onMyLocationChange(Location location) {
         double latitude = location.getLatitude();
         double longitude = location.getLongitude();
         LatLng latLng = new LatLng(latitude,longitude);
-        //historyMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+        historyMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
     }
 
     private class SearchClicked extends AsyncTask<Void, Void, Boolean> {
@@ -221,9 +215,9 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMyLoca
 
                 historyMap.addMarker(markerOptions);
 
-                // Locate the first location
-                if(i==0)
-                    historyMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
+                //Moves to the new location
+                historyMap.setMyLocationEnabled(false);
+                historyMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
 
                 //Generate DropDown menu when marker is selected
                 /*findViewById(R.id.mediaButton).setOnClickListener(new View.OnClickListener() {
