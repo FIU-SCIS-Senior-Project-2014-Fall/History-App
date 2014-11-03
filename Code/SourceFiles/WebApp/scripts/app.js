@@ -1205,135 +1205,13 @@
     }.call(this),
     function() {
         "use strict";
-        angular.module("app.tables", []).controller("tableCtrl", ["$scope", "$filter",
-            function($scope, $filter) {
+        angular.module("app.tables", []).controller("tableCtrl", ["$scope", "$filter", "$http",
+            function($scope, $filter, $http) {
                 var init;
-                return $scope.stores = [{
-                    name: "Nijiya Market",
-                    price: "$$",
-                    sales: 292,
-                    rating: 4
-                }, {
-                    name: "Eat On Monday Truck",
-                    price: "$",
-                    sales: 119,
-                    rating: 4.3
-                }, {
-                    name: "Tea Era",
-                    price: "$",
-                    sales: 874,
-                    rating: 4
-                }, {
-                    name: "Rogers Deli",
-                    price: "$",
-                    sales: 347,
-                    rating: 4.2
-                }, {
-                    name: "MoBowl",
-                    price: "$$$",
-                    sales: 24,
-                    rating: 4.6
-                }, {
-                    name: "The Milk Pail Market",
-                    price: "$",
-                    sales: 543,
-                    rating: 4.5
-                }, {
-                    name: "Nob Hill Foods",
-                    price: "$$",
-                    sales: 874,
-                    rating: 4
-                }, {
-                    name: "Scratch",
-                    price: "$$$",
-                    sales: 643,
-                    rating: 3.6
-                }, {
-                    name: "Gochi Japanese Fusion Tapas",
-                    price: "$$$",
-                    sales: 56,
-                    rating: 4.1
-                }, {
-                    name: "Cost Plus World Market",
-                    price: "$$",
-                    sales: 79,
-                    rating: 4
-                }, {
-                    name: "Bumble Bee Health Foods",
-                    price: "$$",
-                    sales: 43,
-                    rating: 4.3
-                }, {
-                    name: "Costco",
-                    price: "$$",
-                    sales: 219,
-                    rating: 3.6
-                }, {
-                    name: "Red Rock Coffee Co",
-                    price: "$",
-                    sales: 765,
-                    rating: 4.1
-                }, {
-                    name: "99 Ranch Market",
-                    price: "$",
-                    sales: 181,
-                    rating: 3.4
-                }, {
-                    name: "Mi Pueblo Food Center",
-                    price: "$",
-                    sales: 78,
-                    rating: 4
-                }, {
-                    name: "Cucina Venti",
-                    price: "$$",
-                    sales: 163,
-                    rating: 3.3
-                }, {
-                    name: "Sufi Coffee Shop",
-                    price: "$",
-                    sales: 113,
-                    rating: 3.3
-                }, {
-                    name: "Dana Street Roasting",
-                    price: "$",
-                    sales: 316,
-                    rating: 4.1
-                }, {
-                    name: "Pearl Cafe",
-                    price: "$",
-                    sales: 173,
-                    rating: 3.4
-                }, {
-                    name: "Posh Bagel",
-                    price: "$",
-                    sales: 140,
-                    rating: 4
-                }, {
-                    name: "Artisan Wine Depot",
-                    price: "$$",
-                    sales: 26,
-                    rating: 4.1
-                }, {
-                    name: "Hong Kong Chinese Bakery",
-                    price: "$",
-                    sales: 182,
-                    rating: 3.4
-                }, {
-                    name: "Starbucks",
-                    price: "$$",
-                    sales: 97,
-                    rating: 3.7
-                }, {
-                    name: "Tapioca Express",
-                    price: "$",
-                    sales: 301,
-                    rating: 3
-                }, {
-                    name: "House of Bagels",
-                    price: "$",
-                    sales: 82,
-                    rating: 4.4
-                }], $scope.searchKeywords = "", $scope.filteredStores = [], $scope.row = "", $scope.select = function(page) {
+
+                return $http.get('../WebApp/rest/getAllPlaces.php').then(function(response){($scope.stores = response.data, null)});
+                
+                $scope.searchKeywords = "", $scope.filteredStores = [], $scope.row = "", $scope.select = function(page) {
                     var end, start;
                     return start = (page - 1) * $scope.numPerPage, end = start + $scope.numPerPage, $scope.currentPageStores = $scope.filteredStores.slice(start, end)
                 }, $scope.onFilterChange = function() {
@@ -1756,35 +1634,6 @@
             function($scope) {
                 return $scope.isCollapsed = !1
             }
-        ]).controller("ModalDemoCtrl", ["$scope", "$modal", "$log",
-            function($scope, $modal, $log) {
-                $scope.items = ["item1", "item2", "item3"], $scope.open = function() {
-                    var modalInstance;
-                    modalInstance = $modal.open({
-                        templateUrl: "myModalContent.html",
-                        controller: "ModalInstanceCtrl",
-                        resolve: {
-                            items: function() {
-                                return $scope.items
-                            }
-                        }
-                    }), modalInstance.result.then(function(selectedItem) {
-                        $scope.selected = selectedItem
-                    }, function() {
-                        $log.info("Modal dismissed at: " + new Date)
-                    })
-                }
-            }
-        ]).controller("ModalInstanceCtrl", ["$scope", "$modalInstance", "items",
-            function($scope, $modalInstance, items) {
-                $scope.items = items, $scope.selected = {
-                    item: $scope.items[0]
-                }, $scope.ok = function() {
-                    $modalInstance.close($scope.selected.item)
-                }, $scope.cancel = function() {
-                    $modalInstance.dismiss("cancel")
-                }
-            }
         ]).controller("PaginationDemoCtrl", ["$scope",
             function($scope) {
                 return $scope.totalItems = 64, $scope.currentPage = 4, $scope.setPage = function(pageNo) {
@@ -1968,9 +1817,11 @@
                                     "layout/forgot-password",  
                                     "layout/signin",
                                     "layout/signup",
+                                    "layout/thankyou",
                                     "mail/compose",
                                     "mail/inbox",
                                     "mail/single",
+                                    "places/step0",
                                     "places/step1",
                                     "places/step2",
                                     "places/step3",
@@ -1986,6 +1837,8 @@
                     return setRoutes(route)
                 }), $routeProvider.when("/", {
                     redirectTo: "/layout/signin"
+                }), $routeProvider.when("/places", {
+                    redirectTo: "/places/step0"
                 }).when("/404", {
                     templateUrl: "views/layout/404.html"
                 }).otherwise({
@@ -2038,14 +1891,24 @@
                     controller: ["$scope", "$element", "$attrs", "$location",
                         function($scope, $element, $attrs, $location) {
                             var highlightActive, links, path;
-                            return links = $element.find("a"), path = function() {
+                            return links = $element.find("a"), 
+                            path = function() {
                                 return $location.path()
-                            }, highlightActive = function(links, path) {
+                            }
+                            ,highlightActive = function(links, path) {
                                 return path = "#" + path, angular.forEach(links, function(link) {
                                     var $li, $link, href;
-                                    return $link = angular.element(link), $li = $link.parent("li"), href = $link.attr("href"), $li.hasClass("active") && $li.removeClass("active"), 0 === path.indexOf(href) ? $li.addClass("active") : void 0
+                                    return $link = angular.element(link),
+                                    $li = $link.parent("li"), 
+                                    href = $link.attr("href"), 
+
+                                    $li.hasClass("active") && $li.removeClass("active"), 
+                                    
+                                    0 === path.indexOf(href) ? $li.addClass("active") : void 0
+                                
                                 })
-                            }, highlightActive(links, $location.path()), $scope.$watch(path, function(newVal, oldVal) {
+                            }
+                            ,highlightActive(links, $location.path()), $scope.$watch(path, function(newVal, oldVal) {
                                 return newVal !== oldVal ? highlightActive(links, $location.path()) : void 0
                             })
                         }
@@ -2094,6 +1957,7 @@
                                 case "/layout/signin":
                                 case "/layout/signup":
                                 case "/layout/feedback":
+                                case "/layout/thankyou":
                                 case "/layout/forgot-password":
                                     return $element.addClass("body-wide"); 
                             }
@@ -2257,9 +2121,88 @@
         "use strict";
         angular.module("app.controllers", [])
         
-.controller("AppCtrl", ["$scope", "$rootScope", "$http",
-    function($scope, $rootScope, $http) { 
- 
+.controller("AppCtrl", ["$scope", "$rootScope", "$http", "$location", "$timeout",
+    function($scope, $rootScope, $http, $location, $timeout) { 
+  
+        var map;
+        var infowindow;
+        var delay = "100";
+
+        $scope.init = function () {
+
+            var isInWizzard = $location.path().toLowerCase().indexOf("/step")>0 ;
+            var isWizzardSplash = $location.path().toLowerCase().indexOf("/step0")>0 ; 
+
+            if(isInWizzard && !isWizzardSplash) 
+                $scope.activatePlacesWizzardControls();
+            else  
+                $scope.deactivatePlacesWizzardControls();
+        } 
+
+        $scope.activatePlacesWizzardControls = function() { 
+            $scope.places.showWizzardControls = "";
+            $(".placesWizzardControls").removeClass("active"); 
+            var currentStep = parseInt($location.path().split('/places/step')[1]); 
+            $scope.places.wizzardControlAdd = "hidden";
+            $scope.places.wizzardControlNext = currentStep == 3 ? 0 :currentStep+1;
+            $scope.places.wizzardControlBack = currentStep == 0 ? currentStep : currentStep-1; 
+            $scope.places.ShowConfirm = "";
+        
+            if(currentStep == 1 ) 
+                $timeout(function(){
+                    $scope.loadGoogleMap();
+                },delay);
+
+            if(currentStep == 3)
+            { 
+                $scope.getCurrentPlaceDataFromDb();
+                $scope.places.wizzardNextFA = "fa fa-check";
+                $scope.places.wizzardNextText = "Done";
+            } 
+            else
+            { 
+                if(currentStep == 2)
+                {
+                 $scope.getCurrentPlaceDataFromDb();
+                 $scope.fillOutContactInformation();  
+                } 
+                $scope.places.wizzardNextFA = "fa fa-caret-right";
+                $scope.places.wizzardNextText = "Next";
+            } 
+        }
+
+        $scope.getCurrentPlaceDataFromDb = function(){
+            $http.get('../WebApp/rest/getCurrentPlace.php').then(function(response){($scope.serverContact = response.data[0], null)});
+        }
+
+        $scope.deactivatePlacesWizzardControls = function(){
+            var currentStep = parseInt($location.path().split('/places/step')[1]); 
+            $scope.places.showWizzardControls = "hidden"; 
+            $scope.places.wizzardControlAdd = ""; 
+            $scope.places.ShowConfirm = "hidden";
+           
+            if(currentStep == 0)
+                $timeout(function(){
+                    $scope.loadGoogleMap();
+                },delay);
+        }
+
+        ////////////////////////////////////////////////////
+
+        $scope.fillOutContactInformation = function(){  
+          $http.get('../WebApp/rest/getCurrentPlace.php').
+            then(onCurrentPlaceSuccess, onCurrentPlaceError); 
+        }
+     
+        var onCurrentPlaceSuccess = function(response){
+            $scope.serverContact = response.data[0]; 
+        }
+
+        var onCurrentPlaceError = function(response){ 
+            $scope.error = "Place could not be fetched!"; 
+        }
+        ////////////////////////////////////////////////////
+
         var onFeedbackListError = function(response){
           $scope.error = "Feedback could not be fetched!"; 
         }
@@ -2272,20 +2215,221 @@
           $http.get('../WebApp/rest/getAllFeedback.php').
             then(onFeedbackListSuccess, onFeedbackListError); 
         }
+        ////////////////////////////////////////////////////
+        $scope.loadGoogleMap = function() { 
 
-        $scope.enableWizardControls = function(){
-            //$scope.places.showWizardControls = "";
+          var markers = [];
+          var map = new google.maps.Map(document.getElementById('map-canvas'), {
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+          });
+
+          var defaultBounds = new google.maps.LatLngBounds(
+              new google.maps.LatLng(25.75812,-80.376174),
+              new google.maps.LatLng(25.73812,-80.356174));
+          map.fitBounds(defaultBounds);
+
+          // Create the search box and link it to the UI element.
+          var input = /** @type {HTMLInputElement} */(
+              document.getElementById('pac-input'));
+          map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+          var searchBox = new google.maps.places.SearchBox(
+            /** @type {HTMLInputElement} */(input));
+
+          // Listen for the event fired when the user selects an item from the
+          // pick list. Retrieve the matching places for that item.
+          google.maps.event.addListener(searchBox, 'places_changed', function() {
+            var places = searchBox.getPlaces();
+
+            if (places.length == 0) {
+              return;
+            }
+            for (var i = 0, marker; marker = markers[i]; i++) {
+              marker.setMap(null);
+            }
+
+            // For each place, get the icon, place name, and location.
+            markers = [];
+            var bounds = new google.maps.LatLngBounds();
+            for (var i = 0, place; place = places[i]; i++) {
+              var image = {
+                url: place.icon,
+                size: new google.maps.Size(71, 71),
+                origin: new google.maps.Point(0, 0),
+                anchor: new google.maps.Point(17, 34),
+                scaledSize: new google.maps.Size(25, 25)
+              };
+
+              // Create a marker for each place.
+              var marker = new google.maps.Marker({
+                map: map,
+                icon: image,
+                title: place.name,
+                position: place.geometry.location
+              });
+
+              markers.push(marker);
+
+              bounds.extend(place.geometry.location);
+            }
+
+            map.fitBounds(bounds);
+          });
+
+          // Bias the SearchBox results towards places that are within the bounds of the
+          // current map's viewport.
+          google.maps.event.addListener(map, 'bounds_changed', function() {
+            var bounds = map.getBounds();
+            searchBox.setBounds(bounds);
+          });
         }
+
+        function callback(results, status) {
+          if (status == google.maps.places.PlacesServiceStatus.OK) {
+            for (var i = 0; i < results.length; i++) {
+              createMarker(results[i]);
+            }
+          }
+        }
+
+        function createMarker(place) { 
+          var marker = new google.maps.Marker({
+            map: map,
+            position: place.geometry.location
+          });
+
+          google.maps.event.addListener(marker, 'click', function() {
+            infowindow.setContent(place.name);
+            infowindow.open(map, this);
+          });
+        }
+
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+        $scope.contact = {
+            id:      "",
+            name:    "",
+            address: "",
+            email:   "",
+            phone:   "",
+            website: ""
+        } 
+
+
+ 
+
+    $scope.SavePlace = function(){
+
+    $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
+      
+      //UPDATE
+       if($scope.getCurrentStep()!=1)
+        { 
+            
+            $http({
+                url: 'http://ha-dev.cis.fiu.edu/WebApp/rest/updateplace.php',
+                method: "POST",
+                data: { 'id'            : $scope.serverContact.PlaceId,      
+                        'name'          : $scope.serverContact.Name, 
+                        'address'       : $scope.serverContact.Address,
+                        'email'         : $scope.serverContact.Email,
+                        'phone'         : $scope.serverContact.Phone,
+                        'website'       : $scope.serverContact.Website,
+                        'description'   : $scope.serverContact.Description,
+                        'audioPaths'    : $scope.serverContact.AudioPaths,
+                        'imagePaths'    : $scope.serverContact.ImagePaths,
+                        'documentPaths' : $scope.serverContact.DocumentPaths}
+            })
+            .then(function(response) {
+                  // success 
+                  //$location.path('/layout/thankyou');
+                }, 
+                function(response) {  
+                  // failed  
+                }
+            ); 
+        }
+       else //CREATE NEW
+       {
+            $http({
+                url: 'http://ha-dev.cis.fiu.edu/WebApp/rest/insertplace.php',
+                method: "POST",
+                data: { 'name'      : $scope.contact.name, 
+                        'address'   : $scope.contact.address,
+                        'email'     : $scope.contact.email,
+                        'phone'     : $scope.contact.phone,
+                        'website'   : $scope.contact.website}
+            })
+            .then(function(response) {
+                  // success 
+                  //$location.path('/layout/thankyou');
+                }, 
+                function(response) {  
+                  // failed 
+                }
+            ); 
+        }
+    } 
+
+    $scope.getCurrentStep = function(){
+        return parseInt($location.path().split('/places/step')[1]);
+    }
+ 
+    $scope.SaveStep = function(){
+ 
+        var currentStep = $scope.getCurrentStep();
+
+        if(currentStep == 1)
+        {
+            $scope.contact.name    = $("div[class=gm-title]").eq(0).text();
+            $scope.contact.address = $("div[class=gm-addr]").eq(0).text();
+            $scope.contact.website = $("div[class=gm-website]").eq(0).text();
+            $scope.contact.phone   = $("div[class=gm-phone]").eq(0).text();
+            
+            if($scope.contact.name == "" || $scope.contact.address == "")
+                {
+                    $("#selectPlaceErrorMssg").show();
+                    $("#selectPlaceErrorMssg").fadeOut(4000);
+                    return;
+                } 
+        }
+        else if(currentStep == 2)
+        {
+
+        }
+
+        $scope.SavePlace();
+
+        //Routing
+        $location.path('/places/step' + (currentStep == 3? 0: currentStep+1) ); 
+    } 
+
+    $scope.Back = function(){
+        $location.path('/places/step'+ ($scope.getCurrentStep()-1));
+    }
+
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         $scope.main = {
             brand: "History Explorer",
+        },
+        $scope.page = {
+            current: "this is the current page"
         },
         $scope.user = {  
             username: "" ,
             password: "" 
         }
-        ,$scope.places ={
-        	showWizardControls: "hidden"
+        ,$scope.places = {
+        	showWizzardControls: "hidden",
+            wizzardControlNext: "",
+            wizzardControlBack: "",
+            wizzardControlAdd: "" ,
+            wizzardNextFA: "",
+            wizzardNextText: ""
         } 
         , $scope.pageTransitionOpts = [{
             name: "Scale up",
@@ -2306,7 +2450,13 @@
             fixedSidebar: !1,
             pageTransition: $scope.pageTransitionOpts[0]
         }, $scope.$watch("admin", function(newVal, oldVal) {
-            return "horizontal" === newVal.menu && "vertical" === oldVal.menu ? void $rootScope.$broadcast("nav:reset") : newVal.fixedHeader === !1 && newVal.fixedSidebar === !0 ? (oldVal.fixedHeader === !1 && oldVal.fixedSidebar === !1 && ($scope.admin.fixedHeader = !0, $scope.admin.fixedSidebar = !0), void(oldVal.fixedHeader === !0 && oldVal.fixedSidebar === !0 && ($scope.admin.fixedHeader = !1, $scope.admin.fixedSidebar = !1))) : (newVal.fixedSidebar === !0 && ($scope.admin.fixedHeader = !0), void(newVal.fixedHeader === !1 && ($scope.admin.fixedSidebar = !1)))
+            return "horizontal" === newVal.menu && "vertical" === oldVal.menu ? 
+            void $rootScope.$broadcast("nav:reset") : newVal.fixedHeader === !1 && 
+            newVal.fixedSidebar === !0 ? (oldVal.fixedHeader === !1 && oldVal.fixedSidebar === !1 
+            && ($scope.admin.fixedHeader = !0, $scope.admin.fixedSidebar = !0), void(oldVal.fixedHeader === !0 
+            && oldVal.fixedSidebar === !0 && ($scope.admin.fixedHeader = !1, $scope.admin.fixedSidebar = !1))) :
+            (newVal.fixedSidebar === !0 && ($scope.admin.fixedHeader = !0), void(newVal.fixedHeader === !1 &&
+            ($scope.admin.fixedSidebar = !1)))
         }, !0), $scope.color = {
             primary: "#248AAF",
             success: "#3CBC8D",
@@ -2318,6 +2468,100 @@
     }
 ])
 
+.controller("FeedbackCtrl", ["$scope", "$rootScope", "$http", "$location",
+    function($scope, $rootScope, $http, $location) {
+
+    $scope.author   = "";
+    $scope.email    = "";
+    $scope.title    = "";
+    $scope.feedback = "";
+    
+    $scope.ClearForm = function(){
+        $(".feedbackValidation").val(""); 
+    }
+
+    $scope.SubmitFeedback = function(){
+
+    $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
+     
+        if($scope.author == ""  || $scope.email == "" || $scope.title == "" || $scope.feedback == "") 
+        return;
+ 
+        $http({
+            url: 'http://ha-dev.cis.fiu.edu/WebApp/rest/insertfeedback.php',
+            method: "POST",
+            data: { 'author'   : $scope.author, 
+                    'email'    : $scope.email ,
+                    'title'    : $scope.title ,
+                    'feedback' : $scope.feedback }
+        })
+        .then(function(response) {
+              // success
+              $scope.ClearForm();
+              $location.path('/layout/thankyou');
+            }, 
+            function(response) {  
+              // failed 
+            }
+        ); 
+    } 
+}])
+
+.controller("MapCtrl", ["$scope", "$rootScope", "$http", "$location",
+    function($scope, $rootScope, $http, $location) {
+ 
+    }
+])
+
+.controller("PlacesCtrl", ["$scope", "$rootScope", "$http", "$location",
+    function($scope, $rootScope, $http, $location) {
+     
+    
+
+}])
+ 
+.controller('ModalCtrl', function($scope,  $modal) {
+      
+      $scope.ModalInstanceCtrl = function($scope, $modalInstance, $modal, item) {
+         
+         $scope.item = item;
+         $scope.name = "";
+         $scope.title = "title";
+         $scope.body = "body";
+         
+          $scope.ok = function () {
+            $modalInstance.close();
+          };
+          $scope.cancel = function () {
+            $modalInstance.dismiss('cancel');
+          };
+      } 
+
+      $scope.showModal = function() { 
+        $scope.opts = {
+            backdrop: true,
+            backdropClick: true,
+            dialogFade: false,
+            keyboard: true,
+            templateUrl : 'http://ha-dev.cis.fiu.edu/WebApp/views/layout/modal.html',
+            controller : $scope.ModalInstanceCtrl,
+            resolve: {} // empty storage
+        };
+          
+        
+        $scope.opts.resolve.item = function() {
+            return angular.copy({name:$scope.modal}); // pass name to Dialog
+        }
+        
+          var modalInstance = $modal.open($scope.opts);
+          
+          modalInstance.result.then(function(){
+            //on ok button press 
+          },function(){
+            //on cancel button press 
+          });
+      };                   
+})
 
 .controller("DashboardCtrl", ["$scope",
     function($scope) {

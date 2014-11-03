@@ -1,9 +1,9 @@
 <header class="top-header clearfix" >
 
     <!-- Logo -->
-    <div class="logo" ng-controller="AppCtrl">
+    <div class="logo" ng-controller="AppCtrl" style="width: 250px">
         <a href="#/">
-            <!-- <span class="logo-icon glyphicon glyphicon-fire"></span> -->
+             <span class="logo-icon fa fa-gears"></span> 
             <span>{{main.brand}}</span>
         </a>
     </div>
@@ -17,14 +17,7 @@
 
     <div class="top-nav" ng-controller="DashboardCtrl"> 
         <ul class="nav-right pull-right list-unstyled">
-            
-            <li class="search-box visible-md visible-lg">
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-search text-muted"></i></span>
-                    <input type="text" class="form-control" placeholder="Search...">
-                </div>
-            </li>
-
+             
             <li class="dropdown">
                 <a href="#/mail/inbox">
                     <i class="fa fa-envelope-o"></i>

@@ -1,60 +1,33 @@
-<div class="page" style="overflow: auto">  
+<div class="page" style="overflow: auto" ng-controller="FeedbackCtrl">  
   
-<h1 class="text-center">{{main.brand}}</h1>
+  <h1 class="text-center">{{main.brand}}</h1>
 
-<div class="panel panel-default">
-    <div class="panel-heading"><strong><i class="fa fa-quote-left"></i> Feedback</strong></div>
-        <div class="panel-body">
-            <form name="form_constraints" class="form-validation" validate data-ng-submit="submitForm()">
-                <div class="form-group">
-                    <label>Name</label>
-                    <input required id="txtName" type="text" class="form-control feedbackValidation">
-                    <br>
-                    <label>Email</label>
-                    <input required  id="txtEmail" type="text" class="form-control feedbackValidation">
-                    <br>
-                    <label>Title</label>
-                    <input required  id="txtTitle" type="text" class="form-control feedbackValidation">
-                    <br>
-                    <textarea required  id="txtFeedback" class="form-control feedbackValidation" rows="15"></textarea>
-                </div> 
-            </form>
-        </div>
-    </div>  
-        <div class="row pull-right"> 
-            <button id="btnClear" class="btn btn-default btn-w-md " style="margin-right:10px;">Clear</button>
-            <button id="btnSubmitFeedback" type="submit" class="btn btn-success btn-w-md" style="margin-right:13px;" >Submit</button>
-        </div>
+  <div class="panel panel-default">
+      <div class="panel-heading">
+        <strong><i class="fa fa-quote-left"></i> Feedback</strong>
+      </div>
+
+      <div class="panel-body">
+          <form name="form_constraints" class="form-validation" validate data-ng-submit="submitForm()">
+              <div class="form-group">
+                  <label>Name</label>
+                  <input type="text"  ng-model="author" class="form-control feedbackValidation">
+                  <br>
+                  <label>Email</label>
+                  <input  type="text" ng-model="email" class="form-control feedbackValidation">
+                  <br>
+                  <label>Title</label>
+                  <input  type="text" ng-model="title" class="form-control feedbackValidation">
+                  <br>
+                  <textarea rows="15" ng-model="feedback" class="form-control feedbackValidation" ></textarea>
+              </div> 
+          </form>
+      </div>
+  </div>  
+
+  <div class="row pull-right"> 
+    <button ng-click="ClearForm()" class="btn btn-default btn-w-md " style="margin-right:10px;">Clear</button>
+    <button ng-click="SubmitFeedback()" class="btn btn-success btn-w-md" style="margin-right:13px;" >Submit</button>
+  </div>
+
 </div>
-
-<script>
-
-function clearForm(){
-    $(".feedbackValidation").val(""); 
-}
-
-$("#btnClear").click(function(){ 
-    clearForm();
-});
-
-$("#btnSubmitFeedback").click(function(){ 
-    
-   var author = $("#txtName").val();
-   var email = $("#txtEmail").val();
-   var title = $("#txtTitle").val();
-   var feedback = $("#txtFeedback").val();
-
-   if(author == ""  || email == "" || title == "" || feedback == "") 
-   	return; 
-
-   $.post("../WebApp/rest/insertfeedback.php", { 
-	author: author, 
-	email: email,
-	title: title,
-	feedback: feedback,
-	 });
-
-   clearForm(); 
-});
- 
-</script>

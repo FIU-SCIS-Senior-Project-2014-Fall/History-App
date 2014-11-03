@@ -1,0 +1,14 @@
+<div ng-controller="ModalCtrl">
+	<div>
+		<div class="modal-header">
+		  <h1>{{title}}</h1>
+		</div>
+		<div class="modal-body">
+		 {{body}}
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button id="btnClear" class="btn btn-default btn-w-md " style="margin-right:10px;" ng-click="ok()">Ok</button>
+		<button id="btnClear" class="btn btn-default btn-w-md hidden" style="margin-right:10px;" ng-click="cancel()">Cancel</button>
+	</div>
+</div>

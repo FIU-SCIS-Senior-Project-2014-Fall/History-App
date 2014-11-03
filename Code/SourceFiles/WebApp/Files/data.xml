@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu>
+	<item>
+		<id>HoRB</id>
+		<name>House Of Refuge</name>
+		<lat>25.9100330</lat>
+		<longitude>-80.1316440</longitude>
+		<description>A series of stations to rescue and shelter ship-wreaked sailors.</description>
+		<photos></photos>
+		<audio>http://ha-dev.cis.fiu.edu/WebApp/Files/HofR4.m4a</audio>
+		<docu>http://ha-dev.cis.fiu.edu/WebApp/Files/HofR1.docx</docu>
+	</item>
+</menu>

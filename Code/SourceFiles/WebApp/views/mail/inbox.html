@@ -1,64 +1,65 @@
 
-<div class="page">
-    <div class="row">
-        <div class="col-sm-3">
-            <section class="panel panel-default mail-categories">
-                <div class="panel-heading">
-                    <a href="#/mail/compose" class="btn btn-block btn-lg btn-primary">Compose</a>
-                </div>
-                <ul class="list-group">
-                    <li class="list-group-item active"><a href="javascript:;">
-                        <i class="fa fa-inbox"></i>Inbox 
-                    </a></li>
-                    <li class="list-group-item"><a href="javascript:;">
-                        <i class="fa fa-envelope-o"></i>Send mail
-                    </a></li> 
-                </ul>
-            </section>
- 
-        </div>
-        <div class="col-sm-9">
-            <section ng-controller="AppCtrl" data-ng-init="getFeedbackList()" class="panel panel-default mail-container">
-                <div class="panel-heading" style="height:50px">
-                    <strong><span class="glyphicon glyphicon-th"></span> Inbox</strong>
-                    <span><button type="button" id="createTasksFromEmailsButton" class="btn btn-info btn-w-lg pull-right ">Add To Tasks</button></span>
-                </div>
-                <div class="mail-options">
-                    <label id="ToggleAllMailCheckboxes" class="ui-checkbox"><input name="checkbox1" type="checkbox" value="option1" ><span>Toggle All</span></label>
-                </div>
-                <table id="EmailList" class="table table-hover table-responsive">
-                    <thead>
-                    	<th></th>
-                    	<th>
-                    		From
-                    	</th>
-                    	<th></th>
-                    	<th>
-                    		Subject
-                    	</th>
-                    	<th></th>
-                    	<th>
-                    		Date
-                    	</th>
-                    	<th></th>
-                    </thead>
-                    <tbody>
-	                    <tr ng-repeat="feedback in feedbackList" class="mail-unread">
-	                        <td><label id="{{feedback.FeedbackId}}" name="chkEmail_{{feedback.FeedbackId}}" class="ui-checkbox"><input name="checkbox" type="checkbox" value="option1" ><span></span></label></td> 
-	                        <td>{{feedback.Author}}</td>
-	                        <td></td>
-	                        <td>{{feedback.Title}}</td>
-	                        <td></td>
-	                        <td>3/11/14 2:30 PM</td>
-	                        <td></td>
-	                    </tr>
-                    </tbody> 
-                </table>
-            </section>
+<div data-ng-init="init()"> 
+    <div class="page">
+        <div class="row">
+            <div class="col-sm-3">
+                <section class="panel panel-default mail-categories">
+                    <div class="panel-heading">
+                        <a href="#/mail/compose" class="btn btn-block btn-lg btn-primary">Compose</a>
+                    </div>
+                    <ul class="list-group">
+                        <li class="list-group-item active"><a href="javascript:;">
+                            <i class="fa fa-inbox"></i>Inbox 
+                        </a></li>
+                        <li class="list-group-item"><a href="javascript:;">
+                            <i class="fa fa-envelope-o"></i>Send mail
+                        </a></li> 
+                    </ul>
+                </section>
+     
+            </div>
+            <div class="col-sm-9">
+                <section ng-controller="AppCtrl" data-ng-init="getFeedbackList()" class="panel panel-default mail-container">
+                    <div class="panel-heading" style="height:50px">
+                        <strong><span class="glyphicon glyphicon-th"></span> Inbox</strong>
+                        <span><button type="button" id="createTasksFromEmailsButton" class="btn btn-info btn-w-lg pull-right ">Add To Tasks</button></span>
+                    </div>
+                    <div class="mail-options">
+                        <label id="ToggleAllMailCheckboxes" class="ui-checkbox"><input name="checkbox1" type="checkbox" value="option1" ><span>Toggle All</span></label>
+                    </div>
+                    <table id="EmailList" class="table table-hover table-responsive">
+                        <thead>
+                        	<th></th>
+                        	<th>
+                        		From
+                        	</th>
+                        	<th></th>
+                        	<th>
+                        		Subject
+                        	</th>
+                        	<th></th>
+                        	<th>
+                        		Date
+                        	</th>
+                        	<th></th>
+                        </thead>
+                        <tbody>
+    	                    <tr ng-repeat="feedback in feedbackList" class="mail-unread">
+    	                        <td><label id="{{feedback.FeedbackId}}" name="chkEmail_{{feedback.FeedbackId}}" class="ui-checkbox"><input name="checkbox" type="checkbox" value="option1" ><span></span></label></td> 
+    	                        <td>{{feedback.Author}}</td>
+    	                        <td></td>
+    	                        <td>{{feedback.Title}}</td>
+    	                        <td></td>
+    	                        <td>3/11/14 2:30 PM</td>
+    	                        <td></td>
+    	                    </tr>
+                        </tbody> 
+                    </table>
+                </section>
+            </div>
         </div>
     </div>
-</div>
- 
+ </div>
 <script> 
  
 $("label[id=ToggleAllMailCheckboxes] input").click(function(){

@@ -1,15 +1,15 @@
 
-<div class="nav-wrapper">
+<div class="nav-wrapper" data-ng-init="init()">
     <ul id="nav"
         class="nav"
-        data-ng-controller="NavCtrl"
+        data-ng-controller="PlacesCtrl"
         data-slim-scroll
         data-collapse-nav
         data-highlight-active>
         <li><a href="#/dashboard/dashboard"> <i class="fa fa-dashboard"></i><span data-i18n="Dashboard"></span> </a></li>
         
-        <li>
-            <a href="#/places/step1"><i class="fa fa-university"></i><span data-i18n="Places"></span></a> 
+        <li id="placesWizzard">
+            <a href="#/places/"><i class="fa fa-university"></i><span data-i18n="Places"></span></a> 
         </li> 
         
         <li>
@@ -29,17 +29,24 @@
             <a href="#/mail/inbox"><i class="fa fa-envelope"></i><span data-i18n="Mail"></span></a> 
         </li> 
 
-        <li class="pull-right">
-            <a><i class="fa fa-question-circle"></i><span data-i18n="Help"></span></a> 
+        <li class="pull-right" ng-controller="ModalCtrl">
+            <a ng-click="showModal()"><i class="fa fa-question-circle"></i><span data-i18n="Help"></span></a> 
         </li>  
 
-        <li class="pull-right {{places.showWizardControls}}" id="addPlaceButton">
-            <a><i class="fa fa-caret-right"></i><span data-i18n="Next"></span></a> 
+        <li class="placesWizzardControls pull-right {{places.wizzardControlAdd}}" id="btnAddHistoricalSite">
+            <a href="#/places/step1"><i class="fa fa-plus"></i><span data-i18n="New"></span></a> 
+        </li> 
+
+        <li class="placesWizzardControls pull-right {{places.showWizzardControls}}">
+            <a ng-click="SaveStep()"><i class="{{places.wizzardNextFA}}"></i><span data-i18n="{{places.wizzardNextText}}"></span></a> 
         </li> 
   
-        <li class="pull-right {{places.showWizardControls}}" id="addPlaceButton">
-            <a><i class="fa fa-caret-left"></i><span data-i18n="Back"></span></a> 
-        </li> 
- 
+        <li class="placesWizzardControls pull-right {{places.showWizzardControls}}">
+            <a ng-click="Back()"><i class="fa fa-caret-left"></i><span data-i18n="Back"></span></a> 
+        </li>    
+
     </ul>  
 </div>
+
+
+

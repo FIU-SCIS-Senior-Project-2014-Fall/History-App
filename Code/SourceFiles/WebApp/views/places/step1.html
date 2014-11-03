@@ -1,3 +1,15 @@
-<div style="overflow:hidden;" data-ng-init="enableWizardControls()">
-    <map class="ui-map" zoom="15" center="[25.75812,-80.376174,17]" style="width: 100%; height: 1000px; position: fixed; overflow-y:hidden;"></map>  
+
+<div data-ng-init="init()">
+	<input id="pac-input" class="controls" type="text" placeholder="Search Historical Sites">
+	<div id="map-canvas" 
+		style="width: 100%; height: 1000px; position: fixed; overflow-y:hidden;">
+	</div>
+</div>  
+ 
+<div id="selectPlaceErrorMssg" class="alert alert-danger" style="position:absolute;z-index:15;top:50%;left:50%;margin:-100px 0 0 -150px;width=100%;"> 
+    <h2>You must select place first!</h2>
 </div>
+
+<script>
+	$("#selectPlaceErrorMssg").hide();
+</script>
