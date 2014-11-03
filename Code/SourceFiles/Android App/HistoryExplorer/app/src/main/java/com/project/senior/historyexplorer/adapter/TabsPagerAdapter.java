@@ -24,10 +24,10 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
                 return new MediaAudioFilesActivity();
             case 1:
                 // Media'a Document fragment activity
-                //return new MediaDocuFilesActivity();
+                return new MediaDocuFilesActivity();
             case 2:
                 // Media's Photo fragment activity
-                //return new MediaPhotoFilesActivity();
+                return new MediaPhotoFilesActivity();
         }
 
         return null;

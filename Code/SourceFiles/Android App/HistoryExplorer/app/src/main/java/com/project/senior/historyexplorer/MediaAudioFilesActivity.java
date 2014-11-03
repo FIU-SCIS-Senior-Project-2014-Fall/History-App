@@ -38,14 +38,11 @@ public class MediaAudioFilesActivity extends Fragment{
         View rootView = inflater.inflate(R.layout.media_audio_files, container, false);
         new MediaAudioFileListActivity();
         return rootView;
-
     }
 
 
     private class MediaAudioFileListActivity extends ListActivity
     {
-
-        private Context context;
 
         //JSON Keys
         private static final String KEY_ITEM = "item"; // parent node
@@ -60,6 +57,8 @@ public class MediaAudioFilesActivity extends Fragment{
 
         ArrayList<HashMap<String, String>> jsonlist = new ArrayList<>();
         ListView lv;
+        Context context;
+        MediaPlayer player, stopper;
 
         @Override
         protected void onCreate (Bundle savedInstanceState)
@@ -70,11 +69,20 @@ public class MediaAudioFilesActivity extends Fragment{
                 @Override
                 public void onClick(View v) {
                     try {
-                        MediaPlayer player = new MediaPlayer();
+                        player = new MediaPlayer();
+                        player.create(context, R.raw.hofr4);
                         player.setAudioStreamType(AudioManager.STREAM_MUSIC);
-                        player.setDataSource("http://ha-dev.cis.fiu.edu/WebApp/Files/HofR4.m4a");
-                        player.prepare();
-                        player.start();
+                        //player.setDataSource("/raw/HofR4.mp3");
+                        if(player.isPlaying() != true) {
+                            //player.prepare();
+                            player.start();
+                        }
+                        else
+                        {
+                            stopper.stop();
+                            stopper.prepareAsync();
+                            stopper.seekTo(0);
+                        }
                     }
                     catch(Exception e)
                     {
@@ -107,7 +115,7 @@ public class MediaAudioFilesActivity extends Fragment{
                 ListAdapter adapter = new SimpleAdapter(context, jsonlist,
                         R.layout.media_audio_files,
                         new String[]{KEY_AUDIO},
-                        new int[] {R.id.listViewAudio});
+                        new int[] {R.id.list});
                 setListAdapter(adapter);
                 //select single ListView item
                 lv = getListView();

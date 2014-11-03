@@ -20,7 +20,7 @@ import com.project.senior.historyexplorer.adapter.TabsPagerAdapter;
 public class MediaActivity extends FragmentActivity implements ActionBar.TabListener{
 
     private ActionBar actionBar;
-    private ActionBar.TabListener tabListener;
+    //private ActionBar.TabListener tabListener;
     private TabsPagerAdapter mAdapter;
     private ViewPager viewPager;
 
@@ -32,7 +32,7 @@ public class MediaActivity extends FragmentActivity implements ActionBar.TabList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_media_menu);
 
-          // Initilization
+        // Initialization
         viewPager = (ViewPager) findViewById(R.id.pager);
         actionBar = getActionBar();
         mAdapter = new TabsPagerAdapter(getSupportFragmentManager());
@@ -54,7 +54,7 @@ public class MediaActivity extends FragmentActivity implements ActionBar.TabList
 
         /**
          * on swiping the viewpager make respective tab selected
-         * */
+         */
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
             @Override
