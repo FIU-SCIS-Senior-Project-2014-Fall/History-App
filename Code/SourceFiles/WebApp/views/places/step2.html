@@ -1,10 +1,12 @@
 <div class="page" data-ng-init="init()">
   
-     <div class="col-md-6" > 
+  	<div ng-controller="Step2Ctrl">
+
+     	<div class="col-md-6" > 
             <!-- Contact -->
             <div class="panel panel-default">
                 <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Contact Information </strong></div>
-                <div class="panel-body">
+                <div class="panel-body" style="height:425px">
                     <div class="media">
                         <div class="media-body">
                             <ul class="list-unstyled">
@@ -16,7 +18,7 @@
 						                    <label>Name</label>
 					                    </div>
 					                    <div class="col-sm-9">
-					                        <input type="text" class="form-control input-sm" ng-model="serverContact.Name">
+					                        <input type="text" class="form-control input-sm" ng-model="placeInfo.Name">
 					                    </div>
 					                </div>
 
@@ -30,7 +32,7 @@
 						                    <label>Address</label>
 					                    </div>
 					                    <div class="col-sm-9">
-					                        <input type="text" class="form-control input-sm" ng-model="serverContact.Address">
+					                        <input type="text" class="form-control input-sm" ng-model="placeInfo.Address">
 					                    </div>
 					                </div>
  
@@ -44,7 +46,7 @@
 						                    <label>Email</label>
 					                    </div>
 					                    <div class="col-sm-9">
-					                        <input type="text" class="form-control input-sm" ng-model="serverContact.Email">
+					                        <input type="text" class="form-control input-sm" ng-model="placeInfo.Email">
 					                    </div>
 					                </div>
   
@@ -58,7 +60,21 @@
 						                    <label>Phone</label>
 					                    </div>
 					                    <div class="col-sm-9">
-					                        <input type="text" class="form-control input-sm" ng-model="serverContact.Phone">
+					                        <input type="text" class="form-control input-sm" ng-model="placeInfo.Phone">
+					                    </div>
+					                </div>
+ 
+                                </li> 
+                                <br/><br/>
+                                <li>
+
+                                	<div class="form-group">
+                                		<div class="col-sm-3">
+	                                		<span class="icon glyphicon glyphicon-time"></span>
+						                    <label>Hours</label>
+					                    </div>
+					                    <div class="col-sm-9">
+					                        <input type="text" class="form-control input-sm" ng-model="placeInfo.Hours">
 					                    </div>
 					                </div>
  
@@ -71,7 +87,19 @@
 						                    <label>Website</label>
 					                    </div>
 					                    <div class="col-sm-9">
-					                        <input type="text" class="form-control input-sm" ng-model="serverContact.Website">
+					                        <input type="text" class="form-control input-sm" ng-model="placeInfo.Website">
+					                    </div>
+					                </div>  
+                                </li>
+                                <br/><br/>
+                                <li>
+                                	<div class="form-group">
+                                		<div class="col-sm-3">
+	                                		<span class="icon glyphicon glyphicon-send"></span>
+						                    <label>Coordinates</label>
+					                    </div>
+					                    <div class="col-sm-9" data-ng-init="getPlaceCoordinates()">
+					                        <input type="text" class="form-control input-sm" ng-model="placeInfo.Coordinates">
 					                    </div>
 					                </div>  
                                 </li>
@@ -85,21 +113,6 @@
     	</div>
 
     	<div class="col-md-6">
-            <!-- Drop Files Here-->
-            <section class="panel panel-default" style="height:330px">
-		        <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> File upload with Drag and Drop</strong></div>
-		        <div class="panel-body">
-		            <div>
-		                <div class="drop-box" style="height:255px">
-		                	<span>Drag and drop files here</span>
-		                </div>
-		            </div>
-		        </div>
-		    </section>
-            <!-- end Drop Files Here--> 
-        </div>
-
-        <div class="col-md-12">
 
 			<section class="panel panel-default">
 		        <div class="panel-heading">
@@ -185,12 +198,30 @@
 		                        "button"></button>
 		                    </div>
 		                </div> 
-		                <textarea class="ta-bind ta-html ta-editor form-control" ng-model="serverContact.Description">
+		                <textarea class="ta-bind ta-html ta-editor form-control" ng-model="placeInfo.Description" style="resize: none;">
 						</textarea>
 		            </div>
 		        </div>
 		    </section>
- 
         </div>
-  
+
+        <div class="col-md-12" >
+
+
+            <!-- Drop Files Here-->
+            <section class="panel panel-default">
+		        <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> File upload with Drag and Drop</strong></div>
+		        <div class="panel-body">
+		            <div>
+		                <div class="drop-box" style="height:255px">
+		                	<span>Drag and drop files here</span>
+		                </div>
+		            </div>
+		        </div>
+		    </section>
+            <!-- end Drop Files Here--> 
+        </div>
+
+  	</div>
+
 </div>

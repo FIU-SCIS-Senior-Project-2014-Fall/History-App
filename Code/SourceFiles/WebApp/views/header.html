@@ -1,7 +1,7 @@
 <header class="top-header clearfix" >
 
     <!-- Logo -->
-    <div class="logo" ng-controller="AppCtrl" style="width: 250px">
+    <div class="logo" style="width: 250px">
         <a href="#/">
              <span class="logo-icon fa fa-gears"></span> 
             <span>{{main.brand}}</span>
@@ -15,13 +15,13 @@
         <span class="icon-bar"></span>
     </div>
 
-    <div class="top-nav" ng-controller="DashboardCtrl"> 
+    <div class="top-nav"> 
         <ul class="nav-right pull-right list-unstyled">
              
-            <li class="dropdown">
+            <li>
                 <a href="#/mail/inbox">
                     <i class="fa fa-envelope-o"></i>
-                    <span class="badge badge-danger">3</span>
+                    <span class="badge badge-danger">{{mail.unread}}</span>
                 </a> 
             </li> 
 

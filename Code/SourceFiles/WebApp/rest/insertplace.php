@@ -14,7 +14,7 @@ $request = json_decode($postdata);
 @$description  	= $request->description; 
 @$audioPaths  	= $request->audioPaths; 
 @$imagePaths  	= $request->imagePaths; 
-@$documentPaths = $request->phone; 
+@$documentPaths = $request->documentPaths; 
  
 $sqlcode = "INSERT INTO `Places`(`Name`, `Address`, `Email`, `Phone`, `Website`, `Description`, `AudioPaths`, `ImagePaths`, `DocumentPaths`) 
 			VALUES ('$name','$address','$email','$phone', '$website','$description','$audioPaths','$imagePaths','$documentPaths')";

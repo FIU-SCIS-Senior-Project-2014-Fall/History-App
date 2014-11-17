@@ -3,16 +3,17 @@
     	<span class="fa fa-university"></span>
     		Active Historical Sites 
     </div>
+    
     <div class="panel-body" style="height: 430px;">
     
-    <input id="pac-input" class="controls" type="text" placeholder="Search Historical Sites">
-    <div id="map-canvas" data-ng-init="init()" 
-      style="width: 100%; height: 400px; position: fixed; overflow-y:hidden;">
-    </div>
+      <input id="pac-input" class="controls" type="text" placeholder="Search Historical Sites">
+      <div id="map-canvas" data-ng-init="init()" 
+        style="width: 100%; height: 400px; position: fixed; overflow-y:hidden;">
+      </div>
 
     </div>
 </section>
-<div class="page page-table" data-ng-controller="tableCtrl" >
+<div class="page page-table" data-ng-controller="tableCtrl">
 
       <section class="panel panel-default table-dynamic"> 
           <div class="table-filters">
@@ -28,15 +29,15 @@
                   </div>
                   <div class="col-sm-3 col-xs-6 filter-result-info">
                       <span>
-                          Showing {{filteredStores.length}}/{{stores.length}} groups
+                          Showing {{filteredPlaces.length}}/{{places.length}} groups
                       </span>            
                   </div> 
                   <div class="col-sm-3 col-xs-6 filter-result-info pull-right">  
                       <span>	
-                      	<button type="button" id="createTasksFromEmailsButton" class="btn btn-default btn-icon-round pull-right" style="margin-right:5px">
+                      	<button type="button" class="btn btn-default btn-icon-round pull-right" style="margin-right:5px"  ng-click="initWizard()">
                       		<i class="fa fa-plus"></i>
                   		</button>
-                      	<button type="button" id="createTasksFromEmailsButton" class="btn btn-default btn-icon-round pull-right " style="margin-right:5px">
+                      	<button type="button" class="btn btn-default btn-icon-round pull-right " style="margin-right:5px" ng-click="reloadTable()">
                       		<i class="fa fa-refresh"></i>
                   		</button>
                       </span>
@@ -47,55 +48,100 @@
           <table class="table table-bordered table-striped table-responsive">
               <thead>
                   <tr>
-                      <th><div class="th">
-                          Group Id
+                      <th data-ng-click=" defaultOrder('PlaceId') " data-ng-class="{active: row == 'PlaceId'}" style="cursor:pointer">
+                        <div class="th">
+                          <span> 
+                            Place Id
+                          </span>
                           <span class="fa fa-angle-up"
-                                data-ng-click=" order('name') "
-                                data-ng-class="{active: row == 'name'}"></span>
+                                data-ng-class="{active: row == 'PlaceId'}">
+                          </span>
                           <span class="fa fa-angle-down"
-                                data-ng-click=" order('-name') "
-                                data-ng-class="{active: row == '-name'}"></span>
-                      </div></th>
+                                data-ng-class="{active: row == '-PlaceId'}">
+                          </span>
+                        </div>
+                      </th>
 
-                      <th><div class="th">
-                          Group Name
+                      <th data-ng-click=" defaultOrder('Name') " data-ng-class="{active: row == 'Name'}" style="cursor:pointer">
+                        <div class="th"  >
+                          <span > 
+                            Place Name 
+                          </span>
                           <span class="fa fa-angle-up"
-                                data-ng-click=" order('price') "
-                                data-ng-class="{active: row == 'price'}"></span>
+                                data-ng-class="{active: row == 'Name'}">
+                          </span>
                           <span class="fa fa-angle-down"
-                                data-ng-click=" order('-price') "
-                                data-ng-class="{active: row == '-price'}"></span>
-                      </div></th>
+                                data-ng-class="{active: row == '-Name'}">
+                          </span>
+                        </div>
+                      </th>
 
-                      <th><div class="th">
-                          Created By
+                      <th data-ng-click=" defaultOrder('Address') " data-ng-class="{active: row == 'Address'}" style="cursor:pointer">
+                        <div class="th">
+                          <span > 
+                            Address
+                          </span>
                           <span class="fa fa-angle-up"
-                                data-ng-click=" order('sales') "
-                                data-ng-class="{active: row == 'sales'}"></span>
+                                data-ng-class="{active: row == 'Address'}">
+                          </span>
                           <span class="fa fa-angle-down"
-                                data-ng-click=" order('-sales') "
-                                data-ng-class="{active: row == '-sales'}"></span>
-                      </div></th> 
+                                data-ng-class="{active: row == '-Address'}">
+                          </span>
+                        </div>
+                      </th> 
 
-                      <th><div class="th">
-                          Created Date
+                      <th data-ng-click=" defaultOrder('Phone') " data-ng-class="{active: row == 'Phone'}" style="cursor:pointer">
+                        <div class="th">
+                          <span > 
+                            Phone
+                          </span>
                           <span class="fa fa-angle-up"
-                                data-ng-click=" order('sales') "
-                                data-ng-class="{active: row == 'sales'}"></span>
+                                data-ng-class="{active: row == 'Phone'}">
+                          </span>
                           <span class="fa fa-angle-down"
-                                data-ng-click=" order('-sales') "
-                                data-ng-class="{active: row == '-sales'}"></span>
-                      </div></th> 
+                                data-ng-class="{active: row == '-Phone'}">
+                          </span>
+                        </div>
+                      </th> 
+
+                      <th data-ng-click=" defaultOrder('CreatedDate') " data-ng-class="{active: row == 'CreatedDate'}" style="cursor:pointer">
+                        <div class="th">
+                          <span > 
+                            Created Date
+                          </span>
+                          <span class="fa fa-angle-up"
+                                data-ng-class="{active: row == 'CreatedDate'}">
+                          </span>
+                          <span class="fa fa-angle-down"
+                                data-ng-class="{active: row == '-CreatedDate'}">
+                          </span>
+                        </div>
+                      </th> 
+
+                      <th>
+                        <div class="th">
+                          Actions 
+                        </div>
+                      </th> 
 
                   </tr>
               </thead>
 
-              <tbody>
-                  <tr data-ng-repeat="store in currentPageStores">
-                      <td>{{store.sales}}</td>
-                      <td>{{store.name}}</td>
-                      <td>{{store.name}}</td> 
-                      <td>{{store.name}}</td> 
+              <tbody >
+                  <tr data-ng-repeat="place in currentPagePlaces">
+                      <td>{{place.PlaceId}}</td>
+                      <td>{{place.Name}}</td>
+                      <td>{{place.Address}}</td> 
+                      <td>{{place.Phone}}</td> 
+                      <td>{{place.CreatedDate}}</td> 
+                      <td > 
+                         <a ng-click="deletePlace(place)"> 
+                            <i class="fa fa-minus-square  pull-right fa-2x"  style="margin-right:15px;"></i> 
+                         </a>
+                         <a  ng-click="editPlace(place);"> 
+                            <i class="fa fa-pencil-square pull-right fa-2x" style="margin-right:15px;"></i>  
+                         </a>
+                      </td> 
                   </tr>
               </tbody>
 
@@ -110,13 +156,13 @@
                                   data-ng-options="num for num in numPerPageOpt"
                                   data-ng-change="onNumPerPageChange()">
                           </select> 
-                          groups per page
+                          places per page
                       </span>
                   </div>
                   <div class="col-md-6 text-right pagination-container">
                       <pagination class="pagination-sm"
                                   ng-model="currentPage"
-                                  total-items="filteredStores.length"
+                                  total-items="filteredPlaces.length"
                                   max-size="4"
                                   ng-change="select(currentPage)"
                                   items-per-page="numPerPage"
@@ -131,6 +177,4 @@
       </section>
 
   </div>
-</div>
-  
-
+</div> 

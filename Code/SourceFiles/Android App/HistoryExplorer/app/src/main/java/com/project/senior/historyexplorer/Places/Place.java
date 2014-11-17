@@ -1,0 +1,72 @@
+package com.project.senior.historyexplorer.Places;
+
+import com.google.api.client.util.Key;
+
+import java.io.Serializable;
+
+/** Implement this class from "Serializable"
+ * So that you can pass this class Object to another using Intents
+ * Otherwise you can't pass to another actitivy
+ * */
+public class Place implements Serializable {
+
+    public String placeId;
+
+    @Key
+    public String name;
+
+    @Key
+    public String formatted_address;
+
+    @Key
+    public String email;
+
+    @Key
+    public String formatted_phone_number;
+
+    @Key
+    public String hours;
+
+    @Key
+    public String url;
+
+    @Key
+    public String description;
+
+    @Key
+    public String audioPath;
+
+    @Key
+    public String imagePath;
+
+    @Key
+    public String docuPath;
+
+    @Key
+    public Geometry geometry;
+
+    @Key
+    public String dateCreated;
+
+
+    @Override
+    public String toString() {
+        return name + " - " + placeId + " - " + description;
+    }
+
+    public static class Geometry implements Serializable
+    {
+        @Key
+        public Location location;
+    }
+
+    public static class Location implements Serializable
+    {
+        @Key
+        public double lat;
+
+        @Key
+        public double lng;
+    }
+
+}

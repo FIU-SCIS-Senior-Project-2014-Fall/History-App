@@ -3,8 +3,10 @@
 
 include('connectdb.php');
 
+header('Content-type:application/json');
+
 $input = $_GET['input'];
-$sqlcode = mysql_query("SELECT * FROM `Places` WHERE PlaceId = (Select MAX(PlaceId) from Places)");
+$sqlcode = mysql_query("SELECT * FROM `Places`");
 
 $jsonObj = array();
 

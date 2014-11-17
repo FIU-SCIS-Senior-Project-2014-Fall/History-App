@@ -11,6 +11,8 @@ $request = json_decode($postdata);
 @$address 		= $request->address;
 @$email 		= $request->email;
 @$phone  		= $request->phone; 
+@$hours  		= $request->hours; 
+@$coordinates   = $request->coordinates; 
 @$website  		= $request->website; 
 @$description  	= $request->description; 
 @$audioPaths  	= $request->audioPaths; 
@@ -18,11 +20,10 @@ $request = json_decode($postdata);
 @$documentPaths = $request->phone; 
   
 $sqlcode = "UPDATE Places 
-			SET Name='$name', Address='$address', Email='$email',
-			Phone='$phone', Website='$website', Description='$description',
+			SET Name='$name', Address='$address', Email='$email', Phone='$phone', 
+			Hours = '$hours', Website='$website', Description='$description', Coordinates = '$coordinates',
 			AudioPaths='$audioPaths', ImagePaths='$imagePaths',DocumentPaths='$documentPaths' 
 			WHERE PlaceId = '$id'";
-
 
 $insert = mysql_query($sqlcode, $con);
 

@@ -29,9 +29,16 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.project.senior.historyexplorer.Controllers.AlertDialogManager;
+import com.project.senior.historyexplorer.Controllers.ConnectionManager;
+import com.project.senior.historyexplorer.Controllers.GPSTracker;
+import com.project.senior.historyexplorer.Places.GooglePlaces;
+import com.project.senior.historyexplorer.Places.PlaceList;
 
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
@@ -42,17 +49,74 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMyLoca
     private LatLng latLng;
     private EditText mapSearchBox;
 
+    // flag for Internet connection status
+    Boolean isInternetPresent = false;
+
+    // Connection detector class cd
+    ConnectionManager connMgr;
+
+    // Alert Dialog Manager
+    AlertDialogManager alert = new AlertDialogManager();
+
+    // Google Places
+    GooglePlaces googlePlaces;
+
+    // Places List
+    PlaceList nearPlaces;
+
+    // GPS Location
+    GPSTracker gps;
+
+    // ListItems data
+    ArrayList<HashMap<String, String>> placesListItems = new ArrayList<HashMap<String,String>>();
+
+    // KEY Strings
+    public static String KEY_REFERENCE = "reference"; // id of the place
+    public static String KEY_NAME = "name"; // name of the place
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
 
-        setUpMapIfNeeded();
+        connMgr = new ConnectionManager(getApplicationContext());
 
-        historyMap.setMyLocationEnabled(true);
+        // Check if Internet present
+        isInternetPresent = connMgr.isConnectingToInternet();
+        if (!isInternetPresent) {
+            // Internet Connection is not present
+            alert.showAlertDialog(MapsActivity.this, "Internet Connection Error",
+                    "Please connect to working Internet connection", false);
+            // stop executing code by return
+            return;
+        }
+
+        // creating GPS Class object
+        gps = new GPSTracker(this);
+
+        // check if GPS location can get
+        if (gps.canGetLocation()) {
+            setUpMapIfNeeded();
+
+            historyMap.setMyLocationEnabled(true);
+            historyMap.setOnMyLocationChangeListener(this);
+            historyMap.animateCamera(CameraUpdateFactory.zoomTo(15));
+
+            Log.d("Your Location", "latitude:" + gps.getLatitude() + ", longitude: " + gps.getLongitude());
+        } else {
+            // Can't get user's current location
+            alert.showAlertDialog(MapsActivity.this, "GPS Status",
+                    "Couldn't get location information. Please enable GPS",
+                    false);
+            // stop executing code by returned Fp
+            return;
+        }
+
+/*        setUpMapIfNeeded();*/
+
+/*        historyMap.setMyLocationEnabled(true);
         historyMap.setOnMyLocationChangeListener(this);
-        historyMap.animateCamera(CameraUpdateFactory.zoomTo(15));
+        historyMap.animateCamera(CameraUpdateFactory.zoomTo(15));*/
 
         /*For Media page while google maps is down*/
         findViewById(R.id.mediaButton).setOnClickListener(new View.OnClickListener() {
@@ -218,15 +282,6 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMyLoca
                 //Moves to the new location
                 historyMap.setMyLocationEnabled(false);
                 historyMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
-
-                //Generate DropDown menu when marker is selected
-                /*findViewById(R.id.mediaButton).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent = new Intent(MapsActivity.this, MediaActivity.class);
-                        MapsActivity.this.startActivity(intent);
-                    }
-                });*/
             }
         }
     }
