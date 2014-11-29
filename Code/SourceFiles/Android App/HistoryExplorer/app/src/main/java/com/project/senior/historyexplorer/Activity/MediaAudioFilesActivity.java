@@ -1,4 +1,4 @@
-package com.project.senior.historyexplorer;
+package com.project.senior.historyexplorer.Activity;
 
 import android.app.ListActivity;
 import android.app.ProgressDialog;
@@ -25,6 +25,7 @@ import com.project.senior.historyexplorer.Parser.JSONParser;
 import com.project.senior.historyexplorer.Places.GooglePlaces;
 import com.project.senior.historyexplorer.Places.Place;
 import com.project.senior.historyexplorer.Places.PlaceList;
+import com.project.senior.historyexplorer.R;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -102,11 +103,11 @@ public class MediaAudioFilesActivity extends Fragment {
                 googlePlaces = new GooglePlaces();
 
                 try {
-                    // Separeate your place types by PIPE symbol "|"
+                    // Separate your place types by PIPE symbol "|"
                     // If you want all types places make it as null
                     // Check list of types supported by google
                     //
-                    String types = "cafe|restaurant"; // Listing places only cafes, restaurants
+                    String types = "museum|restaurant|embassy|establishment|art_gallery"; // Listing places only cafes, restaurants
 
                     // Radius in meters - increase this value if you don't find any places
                     double radius = 1000; // 1000 meters

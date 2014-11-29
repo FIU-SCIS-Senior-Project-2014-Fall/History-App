@@ -1,4 +1,4 @@
-package com.project.senior.historyexplorer;
+package com.project.senior.historyexplorer.Activity;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -22,7 +22,9 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-public class SavedRoutes extends Activity{
+import com.project.senior.historyexplorer.R;
+
+public class TrendingActivity extends Activity{
 
     private ActionBarDrawerToggle mDrawerToggle;
     private DrawerLayout mDrawerLayout;
@@ -34,9 +36,9 @@ public class SavedRoutes extends Activity{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_saved_routes);
+        setContentView(R.layout.activity_now_trending);
 
-        mDrawerTitles = getResources().getStringArray(R.array.saved_routes_nav_bar);
+        mDrawerTitles = getResources().getStringArray(R.array.navigation_bar);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
 
@@ -84,7 +86,7 @@ public class SavedRoutes extends Activity{
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.savedroutes, menu);
+        inflater.inflate(R.menu.main, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -156,4 +158,6 @@ public class SavedRoutes extends Activity{
                 return super.onOptionsItemSelected(item);
         }
     }
+
+
 }

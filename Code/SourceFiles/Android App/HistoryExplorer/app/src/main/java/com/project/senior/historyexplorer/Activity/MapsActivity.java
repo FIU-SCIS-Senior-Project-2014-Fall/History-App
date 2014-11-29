@@ -1,29 +1,24 @@
-package com.project.senior.historyexplorer;
+package com.project.senior.historyexplorer.Activity;
 
-import android.app.ActionBar;
 import android.content.Context;
 import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.AsyncTask;
-import android.provider.SyncStateContract;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
-import android.view.Menu;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapView;
 //import com.google.android.maps.GeoPoint;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
@@ -34,6 +29,7 @@ import com.project.senior.historyexplorer.Controllers.ConnectionManager;
 import com.project.senior.historyexplorer.Controllers.GPSTracker;
 import com.project.senior.historyexplorer.Places.GooglePlaces;
 import com.project.senior.historyexplorer.Places.PlaceList;
+import com.project.senior.historyexplorer.R;
 
 
 import java.io.IOException;
@@ -112,12 +108,6 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMyLoca
             return;
         }
 
-/*        setUpMapIfNeeded();*/
-
-/*        historyMap.setMyLocationEnabled(true);
-        historyMap.setOnMyLocationChangeListener(this);
-        historyMap.animateCamera(CameraUpdateFactory.zoomTo(15));*/
-
         /*For Media page while google maps is down*/
         findViewById(R.id.mediaButton).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -184,10 +174,6 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMyLoca
         if (historyMap == null) {
 
             historyMap = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map)).getMap();
-
-            /*if (historyMap != null) {
-                setUpMap();
-            }*/
         }
     }
 
@@ -219,9 +205,6 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMyLoca
                 }
 
                 address = results.get(0);
-
-                // Now do something with this GeoPoint:
-                //GeoPoint p = new GeoPoint((int) (address.getLatitude() * 1E6), (int) (address.getLongitude() * 1E6))
 
             } catch (Exception e) {
                 Log.e("", "Something went wrong: ", e);
@@ -278,6 +261,9 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMyLoca
                 markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.historical_museum));
 
                 historyMap.addMarker(markerOptions);
+
+                //Parse JSON
+                //Display nearby places with a different marker
 
                 //Moves to the new location
                 historyMap.setMyLocationEnabled(false);

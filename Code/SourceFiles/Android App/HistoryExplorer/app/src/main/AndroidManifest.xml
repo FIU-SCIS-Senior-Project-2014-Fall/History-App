@@ -55,7 +55,7 @@
         <!--Now Trending Screen-->
         <activity android:name="com.project.senior.historyexplorer.TrendingActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:parentActivityName=".MainMenu"
+            android:parentActivityName=".Activity.MainMenu"
             android:label="@string/now_trending">
         </activity>
 
@@ -63,13 +63,13 @@
         <activity android:name=".MediaActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="Media Page"
-            android:parentActivityName=".MapsActivity">
+            android:parentActivityName=".Activity.MapsActivity">
          </activity>
 
         <!--Saved Routes Screen-->
         <activity android:name="com.project.senior.historyexplorer.SavedRoutes"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:parentActivityName=".MainMenu"
+            android:parentActivityName=".Activity.MainMenu"
             android:label="@string/saved_routes">
         </activity>
 

@@ -1,4 +1,4 @@
-package com.project.senior.historyexplorer;
+package com.project.senior.historyexplorer.Activity;
 
 
 import android.app.ActionBar;
@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import com.project.senior.historyexplorer.R;
 import com.project.senior.historyexplorer.adapter.TabsPagerAdapter;
 
 
@@ -25,7 +26,7 @@ public class MediaActivity extends FragmentActivity implements ActionBar.TabList
     private ViewPager viewPager;
 
     private static final String url = "http://ha-dev.cis.fiu.edu/WebApp/Files/data.xml";
-    private String[] tabs ={"Audio", "Documents", "Photos"};
+    private String[] tabs ={"Details","Audio", "Documents", "Photos"};
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

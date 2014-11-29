@@ -1,4 +1,4 @@
-package com.project.senior.historyexplorer;
+package com.project.senior.historyexplorer.Controllers;
 
 import android.app.ActionBar;
 import android.app.Activity;

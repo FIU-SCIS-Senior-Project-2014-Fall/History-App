@@ -1,12 +1,10 @@
-package com.project.senior.historyexplorer;
-import android.annotation.TargetApi;
+package com.project.senior.historyexplorer.Activity;
 import android.app.Activity;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.MotionEvent;
-import android.view.View;
+
+import com.project.senior.historyexplorer.R;
 
 
 public class Splash extends Activity {

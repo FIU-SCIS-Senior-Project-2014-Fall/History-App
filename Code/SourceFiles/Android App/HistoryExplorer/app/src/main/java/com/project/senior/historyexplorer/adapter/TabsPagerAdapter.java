@@ -1,13 +1,12 @@
 package com.project.senior.historyexplorer.adapter;
 
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.project.senior.historyexplorer.MediaAudioFilesActivity;
-import com.project.senior.historyexplorer.MediaDocuFilesActivity;
-import com.project.senior.historyexplorer.MediaPhotoFilesActivity;
+import com.project.senior.historyexplorer.Activity.MediaAudioFilesActivity;
+import com.project.senior.historyexplorer.Activity.MediaDocuFilesActivity;
+import com.project.senior.historyexplorer.Activity.MediaPhotoFilesActivity;
 
 public class TabsPagerAdapter extends FragmentPagerAdapter {
 

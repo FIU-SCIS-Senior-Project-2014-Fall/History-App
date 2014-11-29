@@ -1,4 +1,4 @@
-package com.project.senior.historyexplorer.Controllers;
+package com.project.senior.historyexplorer.Activity;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -9,6 +9,8 @@ import android.text.Html;
 import android.util.Log;
 import android.widget.TextView;
 
+import com.project.senior.historyexplorer.Controllers.AlertDialogManager;
+import com.project.senior.historyexplorer.Controllers.ConnectionManager;
 import com.project.senior.historyexplorer.Places.GooglePlaces;
 import com.project.senior.historyexplorer.Places.PlaceDetails;
 import com.project.senior.historyexplorer.R;
