@@ -16,7 +16,6 @@ import android.view.MenuItem;
 import com.project.senior.historyexplorer.R;
 import com.project.senior.historyexplorer.adapter.TabsPagerAdapter;
 
-
 ;
 public class MediaActivity extends FragmentActivity implements ActionBar.TabListener{
 
@@ -26,7 +25,7 @@ public class MediaActivity extends FragmentActivity implements ActionBar.TabList
     private ViewPager viewPager;
 
     private static final String url = "http://ha-dev.cis.fiu.edu/WebApp/Files/data.xml";
-    private String[] tabs ={"Details","Audio", "Documents", "Photos"};
+    private String[] tabs ={"Audio", "Documents", "Photos"};
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -74,7 +73,7 @@ public class MediaActivity extends FragmentActivity implements ActionBar.TabList
             }
         });
 
-}
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -84,7 +83,7 @@ public class MediaActivity extends FragmentActivity implements ActionBar.TabList
     }
 
 
-     //Action Bar Icons activity handler
+    //Action Bar Icons activity handler
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 

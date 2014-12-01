@@ -30,7 +30,7 @@
 
         <!--Splash Screen-->
         <activity
-            android:name="com.project.senior.historyexplorer.Splash"
+            android:name="com.project.senior.historyexplorer.Activity.Splash"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:theme="@android:style/Theme.Black.NoTitleBar">
             <intent-filter>
@@ -41,33 +41,47 @@
 
         <!--Main Screen -->
         <activity
-            android:name="com.project.senior.historyexplorer.MainMenu"
+            android:name="com.project.senior.historyexplorer.Activity.MainMenu"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/app_name">
         </activity>
 
         <!--Map Screen-->
-        <activity android:name="com.project.senior.historyexplorer.MapsActivity"
+        <activity android:name="com.project.senior.historyexplorer.Activity.MapsActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:theme="@android:style/Theme.Black.NoTitleBar">
         </activity>
 
         <!--Now Trending Screen-->
-        <activity android:name="com.project.senior.historyexplorer.TrendingActivity"
+        <activity android:name="com.project.senior.historyexplorer.Activity.TrendingActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:parentActivityName=".Activity.MainMenu"
             android:label="@string/now_trending">
         </activity>
 
         <!--Media Screen-->
-        <activity android:name=".MediaActivity"
+        <activity android:name=".Activity.MediaActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="Media Page"
             android:parentActivityName=".Activity.MapsActivity">
          </activity>
 
+        <!--Single Place Screen-->
+        <activity android:name=".Activity.SinglePlaceActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="Place Details"
+            android:parentActivityName=".Activity.PlacesNearbyActivity">
+        </activity>
+
+        <!--Nearby Place Screen-->
+        <activity android:name=".Activity.PlacesNearbyActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="Place Details"
+            android:parentActivityName=".Activity.MainMenu">
+        </activity>
+
         <!--Saved Routes Screen-->
-        <activity android:name="com.project.senior.historyexplorer.SavedRoutes"
+        <activity android:name="com.project.senior.historyexplorer.Activity.SavedRoutes"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:parentActivityName=".Activity.MainMenu"
             android:label="@string/saved_routes">

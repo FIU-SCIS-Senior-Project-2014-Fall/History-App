@@ -3,13 +3,10 @@ package com.project.senior.historyexplorer.Activity;
 import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Message;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,11 +14,9 @@ import android.view.ViewGroup;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.Toast;
 
 import com.project.senior.historyexplorer.Controllers.AlertDialogManager;
 import com.project.senior.historyexplorer.Controllers.GPSTracker;
-import com.project.senior.historyexplorer.Parser.JSONParser;
 import com.project.senior.historyexplorer.Places.GooglePlaces;
 import com.project.senior.historyexplorer.Places.Place;
 import com.project.senior.historyexplorer.Places.PlaceList;
@@ -29,7 +24,6 @@ import com.project.senior.historyexplorer.R;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class MediaAudioFilesActivity extends Fragment {
 
@@ -152,7 +146,7 @@ public class MediaAudioFilesActivity extends Fragment {
 
                                     // Place reference won't display in listview - it will be hidden
                                     // Place reference is used to get "place full details"
-                                    map.put(KEY_REFERENCE, p.placeId);
+                                    map.put(KEY_REFERENCE, p.reference);
 
                                     // Place name
                                     map.put(KEY_NAME, p.name);

@@ -6,8 +6,8 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.AsyncTask;
-import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -19,10 +19,10 @@ import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-//import com.google.android.maps.GeoPoint;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.project.senior.historyexplorer.Controllers.AlertDialogManager;
 import com.project.senior.historyexplorer.Controllers.ConnectionManager;
@@ -31,12 +31,13 @@ import com.project.senior.historyexplorer.Places.GooglePlaces;
 import com.project.senior.historyexplorer.Places.PlaceList;
 import com.project.senior.historyexplorer.R;
 
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+
+//import com.google.android.GeoPoint;
 
 public class MapsActivity extends FragmentActivity implements GoogleMap.OnMyLocationChangeListener {
 
@@ -54,21 +55,9 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMyLoca
     // Alert Dialog Manager
     AlertDialogManager alert = new AlertDialogManager();
 
-    // Google Places
-    GooglePlaces googlePlaces;
-
-    // Places List
-    PlaceList nearPlaces;
-
     // GPS Location
     GPSTracker gps;
 
-    // ListItems data
-    ArrayList<HashMap<String, String>> placesListItems = new ArrayList<HashMap<String,String>>();
-
-    // KEY Strings
-    public static String KEY_REFERENCE = "reference"; // id of the place
-    public static String KEY_NAME = "name"; // name of the place
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -217,7 +206,7 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMyLoca
     // An AsyncTask class for accessing the GeoCoding Web Service
     private class GeoCoderTask extends AsyncTask<String, Void, List<Address>>
     {
-
+        private HashMap<String,Integer> mMarkers = new HashMap();
         @Override
         protected List<Address> doInBackground(String... locationName) {
             // Creating an instance of Geocoder class
@@ -255,12 +244,48 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMyLoca
                         address.getMaxAddressLineIndex() > 0 ? address.getAddressLine(0) : "",
                         address.getCountryName());
 
+                // Manages the markers details, such as where to place the marker,
+                // design of the marker, and the information within the popup
                 markerOptions = new MarkerOptions();
                 markerOptions.position(latLng);
                 markerOptions.title(addressText);
                 markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.historical_museum));
+                markerOptions.flat(true);
+                markerOptions.snippet("Details");
 
-                historyMap.addMarker(markerOptions);
+/*                historyMap.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
+                    @Override
+                    public View getInfoWindow(Marker marker) {
+                        return null;
+                    }
+
+                    @Override
+                    public View getInfoContents(Marker marker) {
+                        View v = getLayoutInflater().inflate(R.layout.infor_window_layout, null);
+
+                        TextView note  = (TextView) v.findViewById(R.id.note);
+                        note.setText(marker.getTitle());
+
+                        return v;
+                    }
+                });
+
+                markerOptions.infoWindowAnchor(0,0);*/
+                Marker marker = historyMap.addMarker(markerOptions);
+                mMarkers.put(marker.getId(), Integer.parseInt(latLng.toString()));
+
+
+                //After selecting the marker
+
+                //make the details button available
+                /*findViewById(R.id.detailsButton).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(MapsActivity.this, SinglePlaceActivity.class);
+                        MapsActivity.this.startActivity(intent);
+                    }
+                });*/
+
 
                 //Parse JSON
                 //Display nearby places with a different marker
@@ -268,6 +293,13 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMyLoca
                 //Moves to the new location
                 historyMap.setMyLocationEnabled(false);
                 historyMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
+
+                historyMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+                    @Override
+                    public void onInfoWindowClick(Marker marker) {
+                        int id = mMarkers.get(marker.getId());
+                    }
+                });
             }
         }
     }
