@@ -1,0 +1,20 @@
+{
+		"title": "House of Refuge Biscayne",
+		"HoRB": [{
+			"latitude": "25.9100330",
+			"longitude": "-80.1316440",
+			"description": "A series of stations to rescue and shelter ship-wreaked sailors",
+			"photos":
+				{
+
+				},
+			"audio":
+				{
+					"Audio 1": "http://ha-dev.cis.fiu.edu/WebApp/Files/HofR4.m4a"
+				},
+			"documents":
+				{
+					"Document 1": "http://ha-dev.cis.fiu.edu/WebApp/Files/HofR1.docx"
+				}
+		}]
+}
