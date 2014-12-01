@@ -26,7 +26,10 @@ public class MainMenu extends FragmentActivity {
         findViewById(R.id.go_to_map).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intent = new Intent(MainMenu.this, MapsActivity.class);
+                /*intent = new Intent(MainMenu.this, MapsActivity.class);
+                MainMenu.this.startActivity(intent);*/
+
+                intent = new Intent(MainMenu.this, PlacesNearbyActivity.class);
                 MainMenu.this.startActivity(intent);
             }
         });

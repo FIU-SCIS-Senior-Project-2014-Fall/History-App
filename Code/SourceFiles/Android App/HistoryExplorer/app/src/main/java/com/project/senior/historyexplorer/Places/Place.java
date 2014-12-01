@@ -10,7 +10,7 @@ import java.io.Serializable;
  * */
 public class Place implements Serializable {
 
-    public String placeId;
+    public String reference;
 
     @Key
     public String name;
@@ -51,7 +51,7 @@ public class Place implements Serializable {
 
     @Override
     public String toString() {
-        return name + " - " + placeId + " - " + description;
+        return name + " - " + reference + " - " + description;
     }
 
     public static class Geometry implements Serializable

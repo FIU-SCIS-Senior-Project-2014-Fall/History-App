@@ -50,17 +50,16 @@
             android:layout_below="@id/et_location"
         />
 
-       <!-- <Button
+       <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Timeline"
-            android:id="@+id/timeline"
+            android:text="Details"
+            android:id="@+id/detailsButton"
             android:layout_below="@id/et_location"
-            android:layout_alignParentStart= "@id/mediaButton"
-            android:layout_alignParentLeft="@id/mediaButton"
+            android:layout_toRightOf="@id/mediaButton"
             />
 
-        <Button
+       <!-- <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Recommend"
