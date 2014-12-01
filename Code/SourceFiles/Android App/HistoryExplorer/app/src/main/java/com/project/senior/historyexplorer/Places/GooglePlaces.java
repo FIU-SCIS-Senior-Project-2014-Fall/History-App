@@ -18,6 +18,7 @@ import org.json.JSONArray;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 
 @SuppressWarnings("deprecation")
@@ -49,7 +50,7 @@ public class GooglePlaces {
      * @param types - type of place to search
      * @return list of places
      * */
-    public PlaceList search(double latitude, double longitude, double radius, String types)
+    public JSONArray search(double latitude, double longitude, double radius, String types)
             throws Exception {
 
         this._latitude = latitude;
@@ -57,15 +58,18 @@ public class GooglePlaces {
         this._radius = radius;
 
         /*try {*/
-            JSONParser parser = new JSONParser();
-            JSONArray request = parser.getJSONFromUrl(PLACES_SEARCH_URL);
-            ArrayList places = new ArrayList();
+        JSONParser parser = new JSONParser();
+        JSONArray request = parser.getJSONFromUrl(PLACES_SEARCH_URL);
 
-            for( int i = 0; i < request.length(); i++) {
-                request.get(i);
-            }
+        //Place place
+        String[] places = new String[request.length()];
 
-            PlaceList list = new PlaceList();
+        for(int i = 0; i < request.length(); i++) {
+            places[i] = request.getString(i);
+        }
+
+        PlaceList list = new PlaceList();
+        //list.results. = (List) places;
             /*HttpRequestFactory httpRequestFactory = createRequestFactory(HTTP_TRANSPORT);
             HttpRequest request = httpRequestFactory
                     .buildGetRequest(new GenericUrl(PLACES_SEARCH_URL));
@@ -77,10 +81,10 @@ public class GooglePlaces {
             if(types != null)
                 request.getUrl().put("types", types);*/
 
-            //PlaceList list = request.execute().parseAs(PlaceList.class);
-            // Check log cat for places response status
-            //Log.d("Places Status", "" + list.status);
-            return list;
+        //PlaceList list = request.execute().parseAs(PlaceList.class);
+        // Check log cat for places response status
+        //Log.d("Places Status", "" + list.status);
+        return request;
 
         /*} catch (HttpResponseException e) {
             Log.e("Error:", e.getMessage());

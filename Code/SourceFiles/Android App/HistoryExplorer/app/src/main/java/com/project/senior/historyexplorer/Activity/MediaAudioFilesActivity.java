@@ -97,7 +97,7 @@ public class MediaAudioFilesActivity extends Fragment {
                 googlePlaces = new GooglePlaces();
 
                 try {
-                    // Separate your place types by PIPE symbol "|"
+                 /*   // Separate your place types by PIPE symbol "|"
                     // If you want all types places make it as null
                     // Check list of types supported by google
                     //
@@ -109,7 +109,7 @@ public class MediaAudioFilesActivity extends Fragment {
                     // get nearest places
                     nearPlaces = googlePlaces.search(gps.getLatitude(),
                             gps.getLongitude(), radius, types);
-
+*/
 
                 } catch (Exception e) {
                     e.printStackTrace();

@@ -21,12 +21,14 @@ import com.project.senior.historyexplorer.Controllers.AlertDialogManager;
 import com.project.senior.historyexplorer.Controllers.ConnectionManager;
 import com.project.senior.historyexplorer.Controllers.GPSTracker;
 import com.project.senior.historyexplorer.Places.GooglePlaces;
-import com.project.senior.historyexplorer.Places.Place;
-import com.project.senior.historyexplorer.Places.PlaceList;
 import com.project.senior.historyexplorer.R;
+
+import org.json.JSONArray;
+import org.json.JSONException;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 
 public class PlacesNearbyActivity extends Activity {
@@ -44,7 +46,7 @@ public class PlacesNearbyActivity extends Activity {
     GooglePlaces googlePlaces;
 
     // Places List
-    PlaceList nearPlaces;
+    JSONArray nearPlaces;
 
     // GPS Location
     GPSTracker gps;
@@ -57,6 +59,8 @@ public class PlacesNearbyActivity extends Activity {
 
     // Places Listview
     ListView lv;
+
+    List<String> list;
 
     // ListItems data
     ArrayList<HashMap<String, String>> placesListItems = new ArrayList<HashMap<String,String>>();
@@ -120,8 +124,17 @@ public class PlacesNearbyActivity extends Activity {
                 i.putExtra("user_latitude", Double.toString(gps.getLatitude()));
                 i.putExtra("user_longitude", Double.toString(gps.getLongitude()));
 
+                list = new ArrayList<String>();
+                for(int x =0; x < nearPlaces.length(); x++)
+                {
+                    try {
+                        list.add(nearPlaces.getJSONArray(x).getString(12));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
                 // passing near places to map activity
-                i.putExtra("near_places", nearPlaces);
+                i.putExtra("near_places", (java.io.Serializable) list);
                 // staring activity
                 startActivity(i);
             }
@@ -213,6 +226,54 @@ public class PlacesNearbyActivity extends Activity {
                     /**
                      * Updating parsed Places into LISTVIEW
                      * */
+                    //add an if statement
+                    //if nearPlaces is not empty do the following
+                    //else report an issue
+                     for (int p =0 ; p < nearPlaces.length(); p++) {
+                        HashMap<String, String> map = new HashMap<String, String>();
+
+                        // Place reference won't display in listview - it will be hidden
+                        // Place reference is used to get "place full details"
+                        try {
+                            map.put(KEY_REFERENCE, nearPlaces.get(p).toString());
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                        // Place name
+                        try {
+                            map.put(KEY_NAME, nearPlaces.get(p).toString());
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+
+                        // adding HashMap to ArrayList
+                        placesListItems.add(map);
+
+                        //need to separate the items so just the name and reference show.
+                    }
+                    // list adapter
+                    ListAdapter adapter = new SimpleAdapter(PlacesNearbyActivity.this,
+                            placesListItems,
+                            R.layout.list_items,
+                            new String[] { KEY_REFERENCE, KEY_NAME}, new int[] {
+                            R.id.reference, R.id.name });
+
+                    // Adding data into list view
+                    lv.setAdapter(adapter);
+
+
+                     /*ListAdapter adapter = new SimpleAdapter(PlacesNearbyActivity.this, (
+                            List<? extends java.util.Map<String, ?>>) nearPlaces,
+                            R.layout.list_items,
+                            new String[] { KEY_REFERENCE, KEY_NAME}, new int[] {
+                            R.id.reference, R.id.name });
+
+                    // Adding data into list view
+                    lv.setAdapter(adapter);
+
+                     /*
                     // Get json response status
                     String status = nearPlaces.status;
 
@@ -280,7 +341,7 @@ public class PlacesNearbyActivity extends Activity {
                         alert.showAlertDialog(PlacesNearbyActivity.this, "Places Error",
                                 "Sorry error occurred.",
                                 false);
-                    }
+                    }*/
                 }
             });
 

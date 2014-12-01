@@ -58,7 +58,6 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMyLoca
     // GPS Location
     GPSTracker gps;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -278,13 +277,13 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMyLoca
                 //After selecting the marker
 
                 //make the details button available
-                /*findViewById(R.id.detailsButton).setOnClickListener(new View.OnClickListener() {
+                findViewById(R.id.detailsButton).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(MapsActivity.this, SinglePlaceActivity.class);
                         MapsActivity.this.startActivity(intent);
                     }
-                });*/
+                });
 
 
                 //Parse JSON
