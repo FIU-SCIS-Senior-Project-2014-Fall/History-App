@@ -272,7 +272,7 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMyLoca
 
                 markerOptions.infoWindowAnchor(0,0);*/
                 Marker marker = historyMap.addMarker(markerOptions);
-                mMarkers.put(marker.getId(), Integer.parseInt(latLng.toString()));
+                //mMarkers.put(marker.getId(), Integer.parseInt(latLng.toString()));
 
 
                 //After selecting the marker

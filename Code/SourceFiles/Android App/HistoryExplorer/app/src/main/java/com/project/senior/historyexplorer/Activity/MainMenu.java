@@ -29,7 +29,7 @@ public class MainMenu extends FragmentActivity {
                 /*intent = new Intent(MainMenu.this, MapsActivity.class);
                 MainMenu.this.startActivity(intent);*/
 
-                intent = new Intent(MainMenu.this, PlacesNearbyActivity.class);
+                intent = new Intent(MainMenu.this, MapsActivity.class);
                 MainMenu.this.startActivity(intent);
             }
         });
