@@ -96,14 +96,6 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMyLoca
             return;
         }
 
-        /*For Media page while google maps is down*/
-        findViewById(R.id.mediaButton).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MapsActivity.this, MediaActivity.class);
-                MapsActivity.this.startActivity(intent);
-            }
-        });
 
         /*
             Search function.

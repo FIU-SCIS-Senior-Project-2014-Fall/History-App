@@ -48,21 +48,22 @@ public class PlacesMapActivity extends MapsActivity {
     // Places List
     List<String> nearPlaces;
 
+    //Places Lat and Lng
+    String[] placesLatLng;
+
     private MarkerOptions markerOptions;
     private LatLng latLng;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_maps);
+        setContentView(R.layout.places_map_activity);
 
-        mapView = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map)).getMap();
+        mapView = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.placemap)).getMap();
         new LoadPlaces().execute();
-
-
     }
 
-    /**
+        /**
      * Background Async Task to Load Google places
      * */
     class LoadPlaces extends AsyncTask<String, String, String> {
@@ -112,48 +113,51 @@ public class PlacesMapActivity extends MapsActivity {
                      * Updating parsed Places into LISTVIEW
                      * */
 
-                    if(addresses==null || addresses.size()==0){
+                    if(nearPlaces==null || nearPlaces.size()==0){
                         Toast.makeText(getBaseContext(), "No Location found", Toast.LENGTH_SHORT).show();
                     }
 
                     // Clears all the existing markers on the map
-                    historyMap.clear();
+                    mapView.clear();
 
-                    // Adding Markers on Google Map for each matching address
-                    for(int i=0;i<addresses.size();i++){
+                    // Adding Markers on Google Map for each Place in the Database
+                    for(int i=0;i<nearPlaces.size();i+=2){
+                        String name = nearPlaces.get(0);
+                        String coordinates = nearPlaces.get(1);
 
-                        Address address = addresses.get(i);
+                        //Strings enter as "####","####".
+                        // //This method makes it into a list of two: {Lat,Lng)
+                        //If coordinates is empty,
+                        if(coordinates != null) {
 
-                        // Creating an instance of GeoPoint, to display in Google Map
-                        latLng = new LatLng(address.getLatitude(), address.getLongitude());
+                            String[] input = coordinates.split(",");
+                            double lat = Double.parseDouble(input[0]);
+                            double lng = Double.parseDouble(input[1]);
 
-                        String addressText = String.format("%s, %s",
-                                address.getMaxAddressLineIndex() > 0 ? address.getAddressLine(0) : "",
-                                address.getCountryName());
-
-                        // Manages the markers details, such as where to place the marker,
-                        // design of the marker, and the information within the popup
-                        markerOptions = new MarkerOptions();
-                        markerOptions.position(latLng);
-                        markerOptions.title(addressText);
-                        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.historical_museum));
-                        markerOptions.flat(true);
-                        markerOptions.snippet("Details");
+                            // Creating an instance of GeoPoint, to display in Google Map
+                            latLng = new LatLng(lat, lng);
 
 
-                        Marker marker = historyMap.addMarker(markerOptions);
+                            // Manages the markers details, such as where to place the marker,
+                            // design of the marker, and the information within the popup
+                            markerOptions = new MarkerOptions();
+                            markerOptions.position(latLng);
+                            markerOptions.title(name);
+                            markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.historical_museum));
+                            markerOptions.flat(true);
+
+                            //adds markers to the map
+                            mapView.addMarker(markerOptions);
 
 
+                            /*//Moves to the new location
+                            mapView.setMyLocationEnabled(true);
+                            mapView.animateCamera(CameraUpdateFactory.zoomTo(15));*/
+                        }
                         //Moves to the new location
-                        historyMap.setMyLocationEnabled(false);
-                        historyMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
+                        mapView.setMyLocationEnabled(true);
+                        mapView.animateCamera(CameraUpdateFactory.zoomTo(15));
 
-                        historyMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
-                            @Override
-                            public void onInfoWindowClick(Marker marker) {
-                                int id = mMarkers.get(marker.getId());
-                            }
-                        });
                     }
                 }
             });

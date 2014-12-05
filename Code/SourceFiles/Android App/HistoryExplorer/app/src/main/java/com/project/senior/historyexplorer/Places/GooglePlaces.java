@@ -180,10 +180,8 @@ public class GooglePlaces {
             JSONObject placeName = placeDetails.getJSONObject(i);
             String name = placeName.getString("Name");
             String coord = placeName.getString("Coordinates");
-            String endChar = "//";
             placesMapInfo.add(name);
             placesMapInfo.add(coord);
-            placesMapInfo.add(endChar);
         }
 
         return placesMapInfo;

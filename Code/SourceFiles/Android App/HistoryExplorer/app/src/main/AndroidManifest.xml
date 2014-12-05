@@ -49,6 +49,7 @@
         <!--Map Screen-->
         <activity android:name="com.project.senior.historyexplorer.Activity.MapsActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
+            android:parentActivityName=".Activity.PlacesNearbyActivity"
             android:theme="@android:style/Theme.Black.NoTitleBar">
         </activity>
 
@@ -85,6 +86,13 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:parentActivityName=".Activity.MainMenu"
             android:label="@string/saved_routes">
+        </activity>
+
+        <!--PlacesMap Screen-->
+        <activity android:name="com.project.senior.historyexplorer.Activity.PlacesMapActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:parentActivityName=".Activity.PlacesNearbyActivity"
+            android:theme="@android:style/Theme.Black.NoTitleBar">
         </activity>
 
 

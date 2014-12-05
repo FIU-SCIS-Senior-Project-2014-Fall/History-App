@@ -117,10 +117,9 @@ public class PlacesNearbyActivity extends Activity {
 
             @Override
             public void onClick(View arg0) {
-                Intent i = new Intent(getApplicationContext(),
-                        PlacesMapActivity.class);
-                // staring activity
-                startActivity(i);
+                Intent intent = new Intent(PlacesNearbyActivity.this, PlacesMapActivity.class);
+                PlacesNearbyActivity.this.startActivity(intent);
+
             }
         });
 
