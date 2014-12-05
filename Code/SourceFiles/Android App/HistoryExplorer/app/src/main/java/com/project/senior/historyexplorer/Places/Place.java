@@ -16,13 +16,13 @@ public class Place implements Serializable {
     public String name;
 
     @Key
-    public String formatted_address;
+    public String address;
 
     @Key
     public String email;
 
     @Key
-    public String formatted_phone_number;
+    public String phone_number;
 
     @Key
     public String hours;
@@ -43,10 +43,10 @@ public class Place implements Serializable {
     public String docuPath;
 
     @Key
-    public Geometry geometry;
+    public String coordinates;
 
     @Key
-    public String dateCreated;
+    public Geometry geometry;
 
 
     @Override

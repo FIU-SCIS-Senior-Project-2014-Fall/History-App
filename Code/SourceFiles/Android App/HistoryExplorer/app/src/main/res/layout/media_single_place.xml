@@ -3,13 +3,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    style="@style/AppTheme"
     android:padding="10dip">
+<!--    <TextView
+        style="@style/AppTheme"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>-->
+
+    <Button
+        android:id="@+id/mediaButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/green_overlay"
+        android:text="Media Page"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="10dip"
+        android:textColor="@color/azure" />
 
     <!-- Name Label -->
     <TextView
         android:text="Name:"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/green"
         android:layout_marginTop="10dip"
         android:layout_marginBottom="5dip"
         android:textStyle="bold"/>
@@ -18,6 +34,7 @@
     <TextView
         android:id="@+id/name"
         android:layout_width="fill_parent"
+        android:textColor="@color/green"
         android:layout_height="wrap_content"/>
 
     <!-- Address Label -->
@@ -25,6 +42,7 @@
         android:text="Address:"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/green"
         android:layout_marginTop="15dip"
         android:layout_marginBottom="5dip"
         android:textStyle="bold"/>
@@ -33,23 +51,94 @@
     <TextView
         android:id="@+id/address"
         android:layout_width="fill_parent"
+        android:textColor="@color/green"
         android:layout_height="wrap_content"/>
+
+    <!-- Email Label -->
+    <TextView
+        android:text="Email:"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/green"
+        android:layout_marginTop="15dip"
+        android:layout_marginBottom="5dip"
+        android:textStyle="bold"/>
+
+    <!-- Email Label -->
+    <TextView
+        android:id="@+id/email"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/green"
+        android:layout_marginTop="10dip"/>
 
     <!-- Phone Number Label -->
     <TextView
-        android:id="@+id/phone"
+        android:text="Phone Number:"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dip"/>
+        android:textColor="@color/green"
+        android:layout_marginTop="10dip"
+        android:layout_marginBottom="5dip"
+        android:textStyle="bold"/>
 
-
-    <!-- Location Value -->
+    <!--  Phone Number Value -->
     <TextView
-        android:id="@+id/location"
+        android:id="@+id/phoneNumber"
+        android:layout_width="fill_parent"
+        android:textColor="@color/green"
+        android:layout_height="wrap_content"/>
+
+    <!-- Hours Label -->
+    <TextView
+        android:text="Hours of Operations:"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dip"
-        android:layout_marginBottom="5dip"/>
+        android:textColor="@color/green"
+        android:layout_marginTop="10dip"
+        android:layout_marginBottom="5dip"
+        android:textStyle="bold"/>
 
+    <!--  Phone Number Value -->
+    <TextView
+        android:id="@+id/hours"
+        android:layout_width="fill_parent"
+        android:textColor="@color/green"
+        android:layout_height="wrap_content"/>
+
+    <!-- Website Label -->
+    <TextView
+        android:text="Website:"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/green"
+        android:layout_marginTop="15dip"
+        android:layout_marginBottom="5dip"
+        android:textStyle="bold"/>
+
+    <!--  Website Value -->
+    <TextView
+        android:id="@+id/website"
+        android:layout_width="fill_parent"
+        android:textColor="@color/green"
+        android:layout_height="wrap_content"/>
+
+    <!-- Description Label -->
+    <TextView
+        android:text="Description:"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/green"
+        android:layout_marginTop="15dip"
+        android:layout_marginBottom="5dip"
+        android:textStyle="bold"/>
+
+    <!-- Description Label -->
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/green"
+        android:layout_marginTop="10dip"/>
 
 </LinearLayout>

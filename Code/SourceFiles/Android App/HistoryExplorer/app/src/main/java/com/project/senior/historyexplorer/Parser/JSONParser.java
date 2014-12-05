@@ -71,4 +71,10 @@ public class JSONParser {
         // return JSON Object
         return jarray;
     }
+
+    /*Retrieves a list of places name*/
+
+    /*Retrieves a list of places for the Single Place Detail Screen*/
+
+    /*Retrieves a list of place name and their coordinates for the PlacesMapActivity map*/
 }

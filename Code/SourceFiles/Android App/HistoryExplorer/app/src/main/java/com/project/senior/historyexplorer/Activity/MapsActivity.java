@@ -252,42 +252,9 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMyLoca
                 markerOptions.flat(true);
                 markerOptions.snippet("Details");
 
-/*                historyMap.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
-                    @Override
-                    public View getInfoWindow(Marker marker) {
-                        return null;
-                    }
 
-                    @Override
-                    public View getInfoContents(Marker marker) {
-                        View v = getLayoutInflater().inflate(R.layout.infor_window_layout, null);
-
-                        TextView note  = (TextView) v.findViewById(R.id.note);
-                        note.setText(marker.getTitle());
-
-                        return v;
-                    }
-                });
-
-                markerOptions.infoWindowAnchor(0,0);*/
                 Marker marker = historyMap.addMarker(markerOptions);
-                //mMarkers.put(marker.getId(), Integer.parseInt(latLng.toString()));
 
-
-                //After selecting the marker
-
-                //make the details button available
-                findViewById(R.id.detailsButton).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent = new Intent(MapsActivity.this, SinglePlaceActivity.class);
-                        MapsActivity.this.startActivity(intent);
-                    }
-                });
-
-
-                //Parse JSON
-                //Display nearby places with a different marker
 
                 //Moves to the new location
                 historyMap.setMyLocationEnabled(false);

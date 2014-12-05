@@ -7,32 +7,30 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.project.senior.historyexplorer.Controllers.AlertDialogManager;
 import com.project.senior.historyexplorer.Controllers.ConnectionManager;
 import com.project.senior.historyexplorer.Places.GooglePlaces;
+import com.project.senior.historyexplorer.Places.Place;
 import com.project.senior.historyexplorer.Places.PlaceDetails;
 import com.project.senior.historyexplorer.R;
 
+import java.util.List;
+
 public class SinglePlaceActivity extends Activity {
-    // flag for Internet connection status
-    Boolean isInternetPresent = false;
-
-    // Connection detector class
-    ConnectionManager connMgr;
-
-    // Alert Dialog Manager
-    AlertDialogManager alert = new AlertDialogManager();
 
     // Google Places
     GooglePlaces googlePlaces;
 
     // Place Details
-    PlaceDetails placeDetails;
+    Button mediaButton;
 
     // Progress dialog
     ProgressDialog pDialog;
+    String name;
 
     // KEY Strings
     public static String KEY_REFERENCE = "reference"; // id of the place
@@ -47,10 +45,28 @@ public class SinglePlaceActivity extends Activity {
         Intent i = getIntent();
 
         // Place reference id
+
+        //Here you retrieve the information from the previous activity
+        // such as Name, Address, Phone, etc
         String reference = i.getStringExtra(KEY_REFERENCE);
 
         // Calling a Async Background thread
         new LoadSinglePlaceDetails().execute(reference);
+
+        mediaButton = (Button)findViewById(R.id.mediaButton);
+        /** Button click event for shown on map */
+        mediaButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+                Intent i = new Intent(getApplicationContext(),
+                        MediaActivity.class);
+                i.putExtra("name", name);
+
+                // staring activity
+                startActivity(i);
+            }
+        });
     }
 
 
@@ -59,6 +75,7 @@ public class SinglePlaceActivity extends Activity {
      * */
     class LoadSinglePlaceDetails extends AsyncTask<String, String, String> {
 
+        List<String> placeListDetails;
         /**
          * Before starting background thread Show Progress Dialog
          * */
@@ -83,7 +100,7 @@ public class SinglePlaceActivity extends Activity {
 
             // Check if used is connected to Internet
             try {
-                placeDetails = googlePlaces.getPlaceDetails(reference);
+                placeListDetails = googlePlaces.searchPlaceDetails(reference);
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -103,85 +120,45 @@ public class SinglePlaceActivity extends Activity {
                     /**
                      * Updating parsed Places into LISTVIEW
                      * */
-                    if(placeDetails != null){
-                        String status = placeDetails.status;
+                    final Place place = new Place();
 
-                        // check place details status
-                        // Check for all possible status
-                        if(status.equals("OK")){
-                            if (placeDetails.result != null) {
-                                String name = placeDetails.result.name;
-                                String address = placeDetails.result.formatted_address;
-                                String phone = placeDetails.result.formatted_phone_number;
-                                String latitude = Double.toString(placeDetails.result.geometry.location.lat);
-                                String longitude = Double.toString(placeDetails.result.geometry.location.lng);
+                    /*Place Information:
+                    * Fill in Place information*/
+                    name = place.name = placeListDetails.get(0);
 
-                                Log.d("Place ", name + address + phone + latitude + longitude);
+                    place.address = placeListDetails.get(1);
+                    place.email = placeListDetails.get(2);
+                    place.phone_number = placeListDetails.get(3);
+                    place.hours = placeListDetails.get(4);
+                    place.url = placeListDetails.get(5);
+                    place.description = placeListDetails.get(6);
+                    place.coordinates = placeListDetails.get(7);
 
-                                // Displaying all the details in the view
-                                // single_place.xml
-                                TextView lbl_name = (TextView) findViewById(R.id.name);
-                                TextView lbl_address = (TextView) findViewById(R.id.address);
-                                TextView lbl_phone = (TextView) findViewById(R.id.phone);
-                                TextView lbl_location = (TextView) findViewById(R.id.location);
+                    TextView lbl_name = (TextView) findViewById(R.id.name);
+                    TextView lbl_address = (TextView) findViewById(R.id.address);
+                    TextView lbl_email = (TextView) findViewById(R.id.email);
+                    TextView lbl_phone = (TextView) findViewById(R.id.phoneNumber);
+                    TextView lbl_hours = (TextView) findViewById(R.id.hours);
+                    TextView lbl_website = (TextView) findViewById(R.id.website);
+                    TextView lbl_description = (TextView) findViewById(R.id.description);
 
-                                // Check for null data from google
-                                // Sometimes place details might missing
-                                name = name == null ? "Not present" : name; // if name is null display as "Not present"
-                                address = address == null ? "Not present" : address;
-                                phone = phone == null ? "Not present" : phone;
-                                latitude = latitude == null ? "Not present" : latitude;
-                                longitude = longitude == null ? "Not present" : longitude;
+                    // Check for null data from google
+                    // Sometimes place details might missing
+                    /*name = name == null ? "Not present" : name; // if name is null display as "Not present"
+                    address = address == null ? "Not present" : address;
+                    phone = phone == null ? "Not present" : phone;
+                    latitude = latitude == null ? "Not present" : latitude;
+                    longitude = longitude == null ? "Not present" : longitude;*/
 
-                                lbl_name.setText(name);
-                                lbl_address.setText(address);
-                                lbl_phone.setText(Html.fromHtml("<b>Phone:</b> " + phone));
-                                lbl_location.setText(Html.fromHtml("<b>Latitude:</b> " + latitude + ", <b>Longitude:</b> " + longitude));
-                            }
-                        }
-                        else if(status.equals("ZERO_RESULTS")){
-                            alert.showAlertDialog(SinglePlaceActivity.this, "Near Places",
-                                    "Sorry no place found.",
-                                    false);
-                        }
-                        else if(status.equals("UNKNOWN_ERROR"))
-                        {
-                            alert.showAlertDialog(SinglePlaceActivity.this, "Places Error",
-                                    "Sorry unknown error occured.",
-                                    false);
-                        }
-                        else if(status.equals("OVER_QUERY_LIMIT"))
-                        {
-                            alert.showAlertDialog(SinglePlaceActivity.this, "Places Error",
-                                    "Sorry query limit to google places is reached",
-                                    false);
-                        }
-                        else if(status.equals("REQUEST_DENIED"))
-                        {
-                            alert.showAlertDialog(SinglePlaceActivity.this, "Places Error",
-                                    "Sorry error occured. Request is denied",
-                                    false);
-                        }
-                        else if(status.equals("INVALID_REQUEST"))
-                        {
-                            alert.showAlertDialog(SinglePlaceActivity.this, "Places Error",
-                                    "Sorry error occured. Invalid Request",
-                                    false);
-                        }
-                        else
-                        {
-                            alert.showAlertDialog(SinglePlaceActivity.this, "Places Error",
-                                    "Sorry error occured.",
-                                    false);
-                        }
-                    }else{
-                        alert.showAlertDialog(SinglePlaceActivity.this, "Places Error",
-                                "Sorry error occured.",
-                                false);
-                    }
+                    lbl_name.setText(place.name);
+                    lbl_address.setText(place.address);
+                    lbl_email.setText(place.email);
+                    lbl_phone.setText(place.phone_number);
+                    lbl_hours.setText(place.hours);
+                    lbl_website.setText(place.url);
+                    lbl_description.setText(place.description);
 
-
-                }
+                                    }
             });
 
         }

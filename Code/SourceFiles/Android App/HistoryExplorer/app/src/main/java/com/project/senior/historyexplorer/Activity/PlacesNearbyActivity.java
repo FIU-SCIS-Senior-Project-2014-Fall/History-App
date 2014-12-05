@@ -21,6 +21,7 @@ import com.project.senior.historyexplorer.Controllers.AlertDialogManager;
 import com.project.senior.historyexplorer.Controllers.ConnectionManager;
 import com.project.senior.historyexplorer.Controllers.GPSTracker;
 import com.project.senior.historyexplorer.Places.GooglePlaces;
+import com.project.senior.historyexplorer.Places.Place;
 import com.project.senior.historyexplorer.R;
 
 import org.json.JSONArray;
@@ -46,21 +47,20 @@ public class PlacesNearbyActivity extends Activity {
     GooglePlaces googlePlaces;
 
     // Places List
-    JSONArray nearPlaces;
+    List<String> nearPlaces;
 
     // GPS Location
     GPSTracker gps;
 
     // Button
     Button btnShowOnMap;
+    Button btnExplMap;
 
     // Progress dialog
     ProgressDialog pDialog;
 
     // Places Listview
     ListView lv;
-
-    List<String> list;
 
     // ListItems data
     ArrayList<HashMap<String, String>> placesListItems = new ArrayList<HashMap<String,String>>();
@@ -69,7 +69,6 @@ public class PlacesNearbyActivity extends Activity {
     // KEY Strings
     public static String KEY_REFERENCE = "reference"; // id of the place
     public static String KEY_NAME = "name"; // name of the place
-    public static String KEY_VICINITY = "vicinity"; // Place area name
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -120,30 +119,27 @@ public class PlacesNearbyActivity extends Activity {
             public void onClick(View arg0) {
                 Intent i = new Intent(getApplicationContext(),
                         PlacesMapActivity.class);
-                // Sending user current geo location
-                i.putExtra("user_latitude", Double.toString(gps.getLatitude()));
-                i.putExtra("user_longitude", Double.toString(gps.getLongitude()));
-
-                list = new ArrayList<String>();
-                for(int x =0; x < nearPlaces.length(); x++)
-                {
-                    try {
-                        list.add(nearPlaces.getJSONArray(x).getString(12));
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-                // passing near places to map activity
-                i.putExtra("near_places", (java.io.Serializable) list);
                 // staring activity
                 startActivity(i);
             }
         });
 
+        // button show on map
+        btnExplMap = (Button) findViewById(R.id.btn_expl_map);
 
+        /** Button click event for exploring Map */
+        btnExplMap.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+                Intent i = new Intent(getApplicationContext(),
+                        MapsActivity.class);
+                 startActivity(i);
+            }
+        });
         /**
          * ListItem click event
-         * On selecting a listitem SinglePlaceActivity is launched
+         * On selecting a list item SinglePlaceActivity is launched
          * */
         lv.setOnItemClickListener(new OnItemClickListener() {
 
@@ -159,7 +155,10 @@ public class PlacesNearbyActivity extends Activity {
 
                 // Sending place reference id to single place activity
                 // place reference id used to get "Place full details"
+
+                // Attach details needed
                 in.putExtra(KEY_REFERENCE, reference);
+
                 startActivity(in);
             }
         });
@@ -191,6 +190,7 @@ public class PlacesNearbyActivity extends Activity {
             googlePlaces = new GooglePlaces();
 
             try {
+ /*            ** This can be used if you want to search by a specific radius **
                 // Separate your place types by PIPE symbol "|"
                 // If you want all types places make it as null
                 // Check list of types supported by google
@@ -202,8 +202,8 @@ public class PlacesNearbyActivity extends Activity {
 
                 // get nearest places
                 nearPlaces = googlePlaces.search(gps.getLatitude(),
-                        gps.getLongitude(), radius, types);
-
+                        gps.getLongitude(), radius, types);*/
+                nearPlaces = googlePlaces.searchPlaceName();
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -229,29 +229,19 @@ public class PlacesNearbyActivity extends Activity {
                     //add an if statement
                     //if nearPlaces is not empty do the following
                     //else report an issue
-                     for (int p =0 ; p < nearPlaces.length(); p++) {
+                    for (int p =0 ; p < nearPlaces.size(); p++){
+                    //for (Place p : nearPlaces) {
                         HashMap<String, String> map = new HashMap<String, String>();
 
                         // Place reference won't display in listview - it will be hidden
                         // Place reference is used to get "place full details"
-                        try {
-                            map.put(KEY_REFERENCE, nearPlaces.get(p).toString());
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
 
-                        // Place name
-                        try {
-                            map.put(KEY_NAME, nearPlaces.get(p).toString());
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
+                           map.put(KEY_REFERENCE, nearPlaces.get(p));
 
+                            map.put(KEY_NAME, nearPlaces.get(p));
 
                         // adding HashMap to ArrayList
                         placesListItems.add(map);
-
-                        //need to separate the items so just the name and reference show.
                     }
                     // list adapter
                     ListAdapter adapter = new SimpleAdapter(PlacesNearbyActivity.this,
@@ -262,87 +252,7 @@ public class PlacesNearbyActivity extends Activity {
 
                     // Adding data into list view
                     lv.setAdapter(adapter);
-
-
-                     /*ListAdapter adapter = new SimpleAdapter(PlacesNearbyActivity.this, (
-                            List<? extends java.util.Map<String, ?>>) nearPlaces,
-                            R.layout.list_items,
-                            new String[] { KEY_REFERENCE, KEY_NAME}, new int[] {
-                            R.id.reference, R.id.name });
-
-                    // Adding data into list view
-                    lv.setAdapter(adapter);
-
-                     /*
-                    // Get json response status
-                    String status = nearPlaces.status;
-
-                    // Check for all possible status
-                    if(status.equals("OK")){
-                        // Successfully got places details
-                        if (nearPlaces.results != null) {
-                            // loop through each place
-                            for (Place p : nearPlaces.results) {
-                                HashMap<String, String> map = new HashMap<String, String>();
-
-                                // Place reference won't display in listview - it will be hidden
-                                // Place reference is used to get "place full details"
-                                map.put(KEY_REFERENCE, p.reference);
-
-                                // Place name
-                                map.put(KEY_NAME, p.name);
-
-
-                                // adding HashMap to ArrayList
-                                placesListItems.add(map);
-                            }
-                            // list adapter
-                            ListAdapter adapter = new SimpleAdapter(PlacesNearbyActivity.this, placesListItems,
-                                    R.layout.list_items,
-                                    new String[] { KEY_REFERENCE, KEY_NAME}, new int[] {
-                                    R.id.reference, R.id.name });
-
-                            // Adding data into list view
-                            lv.setAdapter(adapter);
-                        }
-                    }
-                    else if(status.equals("ZERO_RESULTS")){
-                        // Zero results found
-                        alert.showAlertDialog(PlacesNearbyActivity.this, "Near Places",
-                                "Sorry no places found. Try to change the types of places",
-                                false);
-                    }
-                    else if(status.equals("UNKNOWN_ERROR"))
-                    {
-                        alert.showAlertDialog(PlacesNearbyActivity.this, "Places Error",
-                                "Sorry unknown error occurred.",
-                                false);
-                    }
-                    else if(status.equals("OVER_QUERY_LIMIT"))
-                    {
-                        alert.showAlertDialog(PlacesNearbyActivity.this, "Places Error",
-                                "Sorry query limit to google places is reached",
-                                false);
-                    }
-                    else if(status.equals("REQUEST_DENIED"))
-                    {
-                        alert.showAlertDialog(PlacesNearbyActivity.this, "Places Error",
-                                "Sorry error occurred. Request is denied",
-                                false);
-                    }
-                    else if(status.equals("INVALID_REQUEST"))
-                    {
-                        alert.showAlertDialog(PlacesNearbyActivity.this, "Places Error",
-                                "Sorry error occurred. Invalid Request",
-                                false);
-                    }
-                    else
-                    {
-                        alert.showAlertDialog(PlacesNearbyActivity.this, "Places Error",
-                                "Sorry error occurred.",
-                                false);
-                    }*/
-                }
+               }
             });
 
         }

@@ -5,5 +5,8 @@
     <color name="green">#003300</color>
     <color name="black">#000000</color>
     <color name="maroon_overlay">#A6800000</color>
+    <color name="maroon">#800000</color>
+    <color name="azure">#F0FFFF</color>
+    <color name="lawngreen">#7CFC00</color>
 
 </resources>

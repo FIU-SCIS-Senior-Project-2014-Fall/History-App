@@ -1,14 +1,26 @@
 package com.project.senior.historyexplorer.Activity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.location.Address;
+import android.location.Geocoder;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Html;
+import android.widget.ListAdapter;
+import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.project.senior.historyexplorer.Controllers.AddItemizedOverlay;
+import com.project.senior.historyexplorer.Places.GooglePlaces;
 import com.project.senior.historyexplorer.Places.Place;
 import com.project.senior.historyexplorer.Places.PlaceList;
 import com.project.senior.historyexplorer.R;
@@ -18,122 +30,136 @@ import com.project.senior.historyexplorer.maps.MapController;
 import com.project.senior.historyexplorer.maps.OverlayItem;
 import com.project.senior.historyexplorer.maps.MapView;
 
+import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 
 
 public class PlacesMapActivity extends MapsActivity {
-    // Nearest places
-    PlaceList nearPlaces;
-
-    // Map view
-    //MapView mapView;
+     //MapView mapView;
     GoogleMap mapView;
 
-    // Map overlay items
-    List<Overlay> mapOverlays;
+    // Progress dialog
+    ProgressDialog pDialog;
 
-    AddItemizedOverlay itemizedOverlay;
+    // Google Places
+    GooglePlaces googlePlaces;
 
-    GeoPoint geoPoint;
-    // Map controllers
-    MapController mc;
+    // Places List
+    List<String> nearPlaces;
 
-    double latitude;
-    double longitude;
-    OverlayItem overlayitem;
+    private MarkerOptions markerOptions;
+    private LatLng latLng;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
 
-        // Getting intent data
-        Intent i = getIntent();
-
-        // Users current geo location
-        String user_latitude = i.getStringExtra("user_latitude");
-        String user_longitude = i.getStringExtra("user_longitude");
-
-        // Nearplaces list
-        nearPlaces = (PlaceList) i.getSerializableExtra("near_places");
-
         mapView = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map)).getMap();
+        new LoadPlaces().execute();
 
-        // Geopoint to place on map
-        geoPoint = new GeoPoint((int) (Double.parseDouble(user_latitude) * 1E6),
-                (int) (Double.parseDouble(user_longitude) * 1E6));
-
-        // Drawable marker icon
-        Drawable drawable_user = this.getResources()
-                .getDrawable(R.drawable.mark_blue);
-
-        itemizedOverlay = new AddItemizedOverlay(drawable_user, this);
-
-        // Map overlay item
-        overlayitem = new OverlayItem(geoPoint, "Your Location!");
-
-        /*itemizedOverlay.addOverlay(overlayitem);
-
-        mapOverlays.add(itemizedOverlay);
-        itemizedOverlay.populateNow();*/
-
-        // Drawable marker icon
-        Drawable drawable = this.getResources()
-                .getDrawable(R.drawable.historical_museum);
-
-        itemizedOverlay = new AddItemizedOverlay(drawable, this);
-
-               // These values are used to get map boundary area
-        // The area where you can see all the markers on screen
-        int minLat = Integer.MAX_VALUE;
-        int minLong = Integer.MAX_VALUE;
-        int maxLat = Integer.MIN_VALUE;
-        int maxLong = Integer.MIN_VALUE;
-
-        // check for null in case it is null
-        if (nearPlaces.results != null) {
-            // loop through all the places
-            for (Place place : nearPlaces.results) {
-                latitude = place.geometry.location.lat; // latitude
-                longitude = place.geometry.location.lng; // longitude
-
-                // Geopoint to place on map
-                geoPoint = new GeoPoint((int) (latitude * 1E6),
-                        (int) (longitude * 1E6));
-
-                // Map overlay item
-                overlayitem = new OverlayItem(geoPoint, place.name);
-
-                itemizedOverlay.addOverlay( (OverlayItem) overlayitem);
-
-
-                // calculating map boundary area
-                minLat  = (int) Math.min( geoPoint.getLatitudeE6(), minLat );
-                minLong = (int) Math.min( geoPoint.getLongitudeE6(), minLong);
-                maxLat  = (int) Math.max( geoPoint.getLatitudeE6(), maxLat );
-                maxLong = (int) Math.max( geoPoint.getLongitudeE6(), maxLong );
-            }
-            /*mapOverlays.add(itemizedOverlay);*/
-
-            // showing all overlay items
-            itemizedOverlay.populateNow();
-        }
-
-        // Adjusting the zoom level so that you can see all the markers on map
-        //Moves to the new location and shows center of the map
-
-        mapView.animateCamera(CameraUpdateFactory.newLatLng(new LatLng((maxLat + minLat)/2, (maxLong + minLong)/2 )));
-        mapView.animateCamera(CameraUpdateFactory.zoomTo(Math.abs( minLat - maxLat )));
-        //mapView.getController().zoomToSpan(Math.abs( minLat - maxLat ), Math.abs( minLong - maxLong ));
-
-        // Showing the center of the map
-        //mc.animateTo(new GeoPoint((maxLat + minLat)/2, (maxLong + minLong)/2 ));
-        //mapView.postInvalidate();
 
     }
 
-    protected boolean isRouteDisplayed() {
-        return false;
+    /**
+     * Background Async Task to Load Google places
+     * */
+    class LoadPlaces extends AsyncTask<String, String, String> {
+
+        /**
+         * Before starting background thread Show Progress Dialog
+         * */
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            pDialog = new ProgressDialog(PlacesMapActivity.this);
+            pDialog.setMessage(Html.fromHtml("<b>Search</b><br/>Loading Places..."));
+            pDialog.setIndeterminate(false);
+            pDialog.setCancelable(false);
+            pDialog.show();
+        }
+
+        /**
+         * getting Places JSON
+         * */
+        protected String doInBackground(String... args) {
+            // creating Places class object
+            googlePlaces = new GooglePlaces();
+
+            try {
+                nearPlaces = googlePlaces.searchForMap();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        /**
+         * After completing background task Dismiss the progress dialog
+         * and show the data in UI
+         * Always use runOnUiThread(new Runnable()) to update UI from background
+         * thread, otherwise you will get error
+         * **/
+        protected void onPostExecute(String file_url) {
+            // dismiss the dialog after getting all products
+            pDialog.dismiss();
+            // updating UI from Background Thread
+            runOnUiThread(new Runnable() {
+                public void run() {
+                    /**
+                     * Updating parsed Places into LISTVIEW
+                     * */
+
+                    if(addresses==null || addresses.size()==0){
+                        Toast.makeText(getBaseContext(), "No Location found", Toast.LENGTH_SHORT).show();
+                    }
+
+                    // Clears all the existing markers on the map
+                    historyMap.clear();
+
+                    // Adding Markers on Google Map for each matching address
+                    for(int i=0;i<addresses.size();i++){
+
+                        Address address = addresses.get(i);
+
+                        // Creating an instance of GeoPoint, to display in Google Map
+                        latLng = new LatLng(address.getLatitude(), address.getLongitude());
+
+                        String addressText = String.format("%s, %s",
+                                address.getMaxAddressLineIndex() > 0 ? address.getAddressLine(0) : "",
+                                address.getCountryName());
+
+                        // Manages the markers details, such as where to place the marker,
+                        // design of the marker, and the information within the popup
+                        markerOptions = new MarkerOptions();
+                        markerOptions.position(latLng);
+                        markerOptions.title(addressText);
+                        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.historical_museum));
+                        markerOptions.flat(true);
+                        markerOptions.snippet("Details");
+
+
+                        Marker marker = historyMap.addMarker(markerOptions);
+
+
+                        //Moves to the new location
+                        historyMap.setMyLocationEnabled(false);
+                        historyMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
+
+                        historyMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+                            @Override
+                            public void onInfoWindowClick(Marker marker) {
+                                int id = mMarkers.get(marker.getId());
+                            }
+                        });
+                    }
+                }
+            });
+
+        }
+
     }
 
 }
