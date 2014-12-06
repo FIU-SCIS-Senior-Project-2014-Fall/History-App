@@ -19,8 +19,6 @@ public class GPSTracker extends Service implements LocationListener {
 
     private final Context mContext;
 
-    private GoogleMap historyMap;
-
     // flag for GPS status
     boolean isGPSEnabled = false;
 
@@ -105,16 +103,6 @@ public class GPSTracker extends Service implements LocationListener {
         }
 
         return location;
-    }
-
-    /**
-     * Stop using GPS listener Calling this function will stop using GPS in your
-     * app
-     * */
-    public void stopUsingGPS() {
-        if (locationManager != null) {
-            locationManager.removeUpdates(GPSTracker.this);
-        }
     }
 
     /**

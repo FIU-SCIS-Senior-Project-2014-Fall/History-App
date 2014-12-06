@@ -15,7 +15,6 @@ import com.project.senior.historyexplorer.Controllers.AlertDialogManager;
 import com.project.senior.historyexplorer.Controllers.ConnectionManager;
 import com.project.senior.historyexplorer.Places.GooglePlaces;
 import com.project.senior.historyexplorer.Places.Place;
-import com.project.senior.historyexplorer.Places.PlaceDetails;
 import com.project.senior.historyexplorer.R;
 
 import java.util.List;

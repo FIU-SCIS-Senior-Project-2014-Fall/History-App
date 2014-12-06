@@ -19,7 +19,6 @@ import com.project.senior.historyexplorer.Controllers.AlertDialogManager;
 import com.project.senior.historyexplorer.Controllers.GPSTracker;
 import com.project.senior.historyexplorer.Places.GooglePlaces;
 import com.project.senior.historyexplorer.Places.Place;
-import com.project.senior.historyexplorer.Places.PlaceList;
 import com.project.senior.historyexplorer.R;
 
 import java.util.ArrayList;
@@ -31,7 +30,7 @@ public class MediaAudioFilesActivity extends Fragment {
     // Google Places
     private GooglePlaces googlePlaces;
     // Places List
-    private PlaceList nearPlaces;
+    //private PlaceList nearPlaces;
     // Progress dialog
     private ProgressDialog pDialog;
     // Alert Dialog Manager
@@ -134,7 +133,7 @@ public class MediaAudioFilesActivity extends Fragment {
                          * Updating parsed Places into LISTVIEW
                          * */
                         // Get json response status
-                        String status = nearPlaces.status;
+                        /*String status = nearPlaces.status;
 
                         // Check for all possible status
                         if (status.equals("OK")) {
@@ -189,7 +188,7 @@ public class MediaAudioFilesActivity extends Fragment {
                             alert.showAlertDialog(MediaAudioFileListActivity.this, "Places Error",
                                     "Sorry error occured.",
                                     false);
-                        }
+                        }*/
                     }
                 });
 

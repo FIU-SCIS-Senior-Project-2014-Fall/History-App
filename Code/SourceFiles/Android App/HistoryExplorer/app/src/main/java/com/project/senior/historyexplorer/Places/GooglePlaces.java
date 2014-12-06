@@ -27,7 +27,7 @@ import java.util.List;
 public class GooglePlaces {
 
     /** Global instance of the HTTP transport. */
-    private static final HttpTransport HTTP_TRANSPORT = new NetHttpTransport();
+    //private static final HttpTransport HTTP_TRANSPORT = new NetHttpTransport();
 
     // Google API Key
     //private static final String API_KEY = "AIzaSyD4OFUFpZUAfphENx613OD5Ti0AVFR27bg";
@@ -44,7 +44,7 @@ public class GooglePlaces {
     List<String> allPlaceName;
 
     //List of searchPlaceDetails
-    List<String> placesDetails;
+    //List<String> placesDetails;
 
     //List of the information to display on the Map page
     List<String> placesMapInfo;

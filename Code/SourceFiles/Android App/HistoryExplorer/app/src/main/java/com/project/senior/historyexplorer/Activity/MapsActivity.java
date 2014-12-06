@@ -1,7 +1,6 @@
 package com.project.senior.historyexplorer.Activity;
 
 import android.content.Context;
-import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -27,12 +26,9 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.project.senior.historyexplorer.Controllers.AlertDialogManager;
 import com.project.senior.historyexplorer.Controllers.ConnectionManager;
 import com.project.senior.historyexplorer.Controllers.GPSTracker;
-import com.project.senior.historyexplorer.Places.GooglePlaces;
-import com.project.senior.historyexplorer.Places.PlaceList;
 import com.project.senior.historyexplorer.R;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;

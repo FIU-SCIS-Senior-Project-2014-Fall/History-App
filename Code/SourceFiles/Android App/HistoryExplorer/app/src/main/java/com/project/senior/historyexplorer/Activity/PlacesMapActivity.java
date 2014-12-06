@@ -1,15 +1,9 @@
 package com.project.senior.historyexplorer.Activity;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
-import android.graphics.drawable.Drawable;
-import android.location.Address;
-import android.location.Geocoder;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Html;
-import android.widget.ListAdapter;
-import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -17,21 +11,10 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.project.senior.historyexplorer.Controllers.AddItemizedOverlay;
 import com.project.senior.historyexplorer.Places.GooglePlaces;
-import com.project.senior.historyexplorer.Places.Place;
-import com.project.senior.historyexplorer.Places.PlaceList;
 import com.project.senior.historyexplorer.R;
-import com.project.senior.historyexplorer.maps.GeoPoint;
-import com.project.senior.historyexplorer.maps.Overlay;
-import com.project.senior.historyexplorer.maps.MapController;
-import com.project.senior.historyexplorer.maps.OverlayItem;
-import com.project.senior.historyexplorer.maps.MapView;
 
-import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
 
 
