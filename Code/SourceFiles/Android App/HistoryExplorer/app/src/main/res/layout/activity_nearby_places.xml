@@ -5,19 +5,22 @@
     android:id="@+id/content_frame"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/burlywood"
     tools:context="edu.fiu.seniorproject.SavedRoutes">
+<!--
     <TextView
         style="@style/AppTheme"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+-->
 
-    <!--Background-->
+  <!--  &lt;!&ndash;Background&ndash;&gt;
     <ImageView
         android:layout_width="424dp"
         android:layout_height="705dp"
         android:id="@+id/imageView"
         android:layout_gravity="center"
-        android:src="@drawable/main_menu" />
+        android:src="@drawable/main_menu" />-->
 
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
